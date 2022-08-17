@@ -8,6 +8,8 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
+    "db-migrate": "^0.11.13",
+    "db-migrate-mysql": "^2.2.0",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "jest": "^28.1.3",
@@ -24,6 +26,7 @@
     "supertest": "^6.2.4"
   },
   "scripts": {
+    "db-migrate": "node node_modules/db-migrate/bin/db-migrate",
     "start": "node dist/src/app.js",
     "dev": "nodemon src/index.ts",
     "build": "tsc -p .",
