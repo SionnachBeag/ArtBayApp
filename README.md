@@ -1,1 +1,1 @@
-# ArtBayApp
+# ArtBayApp Full-Stack project
