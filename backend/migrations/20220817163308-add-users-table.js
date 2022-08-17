@@ -23,7 +23,7 @@ exports.up = function (db, callback) {
           type: 'int',
           primaryKey: true,
           autoIncrement: true,
-          notnull: true,
+          notNull: true,
         },
         username: {
           type: 'string',
