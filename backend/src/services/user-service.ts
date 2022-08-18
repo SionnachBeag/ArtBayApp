@@ -1,4 +1,4 @@
-import { IRegisterDomainModel } from '../models/domain-models/IRegisterDomainModel';
+import { IDBResultDomainModel } from '../models/domain-models/IDBResultDomainModel';
 import { IUserDomainModel } from '../models/domain-models/IUserDomainModel';
 import { ILoginRequestModel } from '../models/request-models/ILoginRequestModel';
 import { IRegisterRequestModel } from '../models/request-models/IRegisterRequestModel';
@@ -8,7 +8,7 @@ import { passwordService } from './password-service';
 export const userService = {
   async register(
     newUser: IRegisterRequestModel
-  ): Promise<IRegisterDomainModel> {
+  ): Promise<IDBResultDomainModel> {
     const userDataByUserName: IUserDomainModel =
       await userRepository.getUserByUsername(newUser.userName);
     if (userDataByUserName) {
