@@ -2,7 +2,8 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-//export const saltRounds = 10;
+export const saltRounds = 10;
+export const expireTimeIn: string = '7d';
 
 export default {
   mysql: {
