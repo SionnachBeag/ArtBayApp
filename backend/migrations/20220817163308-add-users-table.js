@@ -38,6 +38,7 @@ exports.up = function (db, callback) {
         artDollars: {
           type: 'int',
           notNull: true,
+          defaultValue: 100,
         },
       },
       ifNotExists: true,
