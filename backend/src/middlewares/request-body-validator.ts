@@ -26,7 +26,7 @@ export default function requestBodyValidator(
       if (errorObj.message) {
         errorObj.message = `${errorObj.message} ${
           multi ? 'are' : 'is'
-        } required.`;
+        } required`;
         errorObj.status = statusCode;
         next(errorObj);
       }
