@@ -1,5 +1,5 @@
 import { db } from '../data/connection';
-import { IRegisterDomainModel } from '../models/domain-models/IRegisterDomainModel';
+import { IDBResultDomainModel } from '../models/domain-models/IDBResultDomainModel';
 import { IUserDomainModel } from '../models/domain-models/IUserDomainModel';
 import { IRegisterRequestModel } from '../models/request-models/IRegisterRequestModel';
 
@@ -22,8 +22,8 @@ export const userRepository = {
 
   async register(
     newUser: IRegisterRequestModel
-  ): Promise<IRegisterDomainModel> {
-    const repoResponse = await db.query<IRegisterDomainModel>(
+  ): Promise<IDBResultDomainModel> {
+    const repoResponse = await db.query<IDBResultDomainModel>(
       `INSERT INTO users (userName, email, password) VALUES (?,?,?)`,
       [newUser.userName, newUser.email, newUser.password]
     );
