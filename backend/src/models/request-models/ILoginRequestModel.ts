@@ -1,1 +1,4 @@
-export interface ILoginRequestModel {}
+export interface ILoginRequestModel {
+  userName: string;
+  password: string;
+}
