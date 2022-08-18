@@ -1,1 +1,4 @@
-export interface IRegisterViewModel {}
+export interface IRegisterViewModel {
+  status: number;
+  message: string;
+}
