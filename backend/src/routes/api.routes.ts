@@ -6,9 +6,11 @@ import {
   registerRequestKeys,
   addItemRequestKeys,
   loginRequestKeys,
+  idParamKey,
 } from '../helpers/request-keys';
 import { itemController } from '../controllers/item-controller';
 import tokenAuthentication from '../middlewares/token-authentication';
+import requestParamValidator from '../middlewares/request-param-validator';
 
 const apiRouter = express.Router();
 apiRouter.use(cors());
@@ -29,5 +31,10 @@ apiRouter.post('/items', itemController.addItem);
 
 apiRouter.route('/items').get(tokenAuthentication());
 apiRouter.get('/items', itemController.listAllItemsOnSale);
+
+apiRouter
+  .route('/items/:id')
+  .get(requestParamValidator(idParamKey, 400), tokenAuthentication());
+apiRouter.get('/items/:id', itemController.getItemById);
 
 export default apiRouter;
