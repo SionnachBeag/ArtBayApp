@@ -10,13 +10,13 @@ export default function requestParamValidator(
     let errorObj = {} as ApiErrorModel;
     if (Object.keys(toValidateParams).length > 0) {
       if (toValidateParams[keys[0]] === 'undefined') {
-        errorObj.message = `The ${keys[0]} params is missing.`;
+        errorObj.message = `The ${keys[0]} is missing.`;
         if (errorObj.message) {
           errorObj.status = statusCode;
           next(errorObj);
         }
       } else if (isNaN(+toValidateParams[keys[0]])) {
-        errorObj.message = `The ${keys[0]} params is not a number.`;
+        errorObj.message = `The ${keys[0]} is not a number.`;
         if (errorObj.message) {
           errorObj.status = statusCode;
           next(errorObj);
