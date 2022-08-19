@@ -10,4 +10,15 @@ export const itemService = {
   async listAllItemsOnSale(): Promise<IItemDomainModel[]> {
     return await itemRepository.listAllItemsOnSale();
   },
+
+  async getItemById(id: string): Promise<IItemDomainModel> {
+    const itemById = await itemRepository.getItemById(id);
+    if (!itemById) {
+      return Promise.reject({
+        message: 'item is not found',
+        status: 404,
+      });
+    }
+    return itemById;
+  },
 };
