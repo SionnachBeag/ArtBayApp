@@ -3,6 +3,7 @@ import { ApiErrorModel } from '../models/ApiErrorModel';
 import { ICreateItemRequestModel } from '../models/request-models/ICreateItemRequestModel';
 import { ICreateItemViewModel } from '../models/view-models/ICreateItemViewModel';
 import { IItemsOnSaleViewModel } from '../models/view-models/IItemsOnSaleViewModel';
+import { imgUrlService } from '../services/img-url-service';
 import { itemService } from '../services/item-service';
 
 export const itemController = {
@@ -12,6 +13,20 @@ export const itemController = {
     next: NextFunction
   ) {
     const newItem: ICreateItemRequestModel = req.body;
+
+    if (newItem.price < 0 || newItem.price % 1 !== 0)
+      return next({
+        message: 'Incorrect price value.',
+        status: 400,
+      });
+
+    const isValid = imgUrlService.imgUrlCheck(newItem.imgUrl);
+    if (!isValid)
+      return next({
+        message: 'Incorrect image url.',
+        status: 400,
+      });
+
     await itemService
       .addItem(newItem)
       .then((insertId) => {
@@ -33,6 +48,24 @@ export const itemController = {
   ) {
     await itemService
       .listAllItemsOnSale()
+      .then((data) => {
+        const filteredData = data.map((e) => {
+          delete e.buyerId;
+          return e;
+        });
+        return res.json(filteredData);
+      })
+      .catch((err: ApiErrorModel) => {
+        console.log(err);
+        next(err);
+        return;
+      });
+  },
+
+  async getItemById(req: Request, res: Response, next: NextFunction) {
+    const { id } = <{ id: string }>req.params;
+    await itemService
+      .getItemById(id)
       .then((data) => {
         return res.json(data);
       })
