@@ -26,4 +26,12 @@ export const itemRepository = {
     );
     return itemsOnSale;
   },
+
+  async getItemById(id: string): Promise<IItemDomainModel> {
+    const requestedItem = await db.query<IItemDomainModel[]>(
+      'SELECT * FROM items WHERE id = ?',
+      [`${id}`]
+    );
+    return requestedItem[0];
+  },
 };
