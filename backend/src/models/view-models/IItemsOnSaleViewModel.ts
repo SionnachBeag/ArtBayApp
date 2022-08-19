@@ -4,7 +4,7 @@ export interface IItemsOnSaleViewModel {
   description: string;
   imgUrl: string;
   price: number;
-  isSold: boolean;
   buyerId?: number;
+  isSold: boolean;
   sellerId: number;
 }
