@@ -9,3 +9,5 @@ export const addItemRequestKeys: string[] = [
   'price',
   'sellerId',
 ];
+
+export const idParamKey: string[] = ['id'];
