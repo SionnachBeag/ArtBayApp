@@ -86,8 +86,6 @@ export class RegisterComponent {
               this.reset(form);
               this.tabValue.emit(1);
             }, 1000);
-          } else if (messageFromServer.status === 422) {
-            this.result = `${messageFromServer.message}`;
           }
         },
         (err: HttpErrorResponse) => {
