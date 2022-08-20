@@ -1,0 +1,78 @@
+<form
+  [formGroup]="registerForm"
+  #form="ngForm"
+  class="registerForm"
+  (ngSubmit)="onSubmit(form)"
+>
+  <mat-form-field class="registerFormField">
+    <!-- <span matPrefix><fa-icon class="fa" [icon]="faUser"></fa-icon></span> -->
+    <input
+      type="text"
+      matInput
+      id="userName"
+      formControlName="userName"
+      placeholder="Username"
+    />
+  </mat-form-field>
+  <mat-form-field class="registerFormField">
+    <!-- <span matPrefix><fa-icon class="fa" [icon]="faEnvelope"></fa-icon></span> -->
+    <input
+      type="text"
+      matInput
+      id="email"
+      formControlName="email"
+      placeholder="E-mail"
+      required
+    />
+  </mat-form-field>
+  <mat-form-field class="registerFormField">
+    <!-- <span matPrefix><fa-icon class="fa" [icon]="faLock"></fa-icon></span> -->
+    <input
+      type="password"
+      matInput
+      id="password"
+      formControlName="password"
+      placeholder="Password"
+      required
+      [type]="hide ? 'password' : 'text'"
+    />
+    <!-- <span matSuffix
+      ><fa-icon
+        class="fa eye"
+        [icon]="faEye"
+        (click)="togglePasswordVisibility()"
+      ></fa-icon>
+    </span> -->
+  </mat-form-field>
+  <mat-form-field class="registerFormField">
+    <!-- <span matPrefix><fa-icon class="fa" [icon]="faLock"></fa-icon></span> -->
+    <input
+      type="password"
+      matInput
+      id="passwordConfirm"
+      formControlName="passwordConfirm"
+      placeholder="Confirm Password"
+      required
+      [type]="hideConfirm ? 'password' : 'text'"
+    />
+    <!-- <span matSuffix
+      ><fa-icon
+        class="fa eye"
+        [icon]="faEyeConfirm"
+        (click)="togglePasswordConfirmVisibility()"
+      ></fa-icon>
+    </span> -->
+  </mat-form-field>
+  <span class="message errorMessage" *ngIf="!registerForm.valid">{{
+    errorMessage
+  }}</span>
+  <p class="message btn-do-not-move-tag" *ngIf="registerForm.valid"></p>
+  <button class="register-button" mat-flat-button type="submit">
+    Create An Account</button
+  ><br />
+  <span
+    class="message serverMessage"
+    *ngIf="registerForm.valid && form.submitted"
+    >{{ result }}</span
+  >
+</form>
