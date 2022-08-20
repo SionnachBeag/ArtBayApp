@@ -1,1 +1,10 @@
-<p>landing-page works!</p>
+<div class="container">
+  <div class="auth-container">
+    <mat-tab-group [(selectedIndex)]="tabIndex">
+      <mat-tab label="Sign up">
+        <app-register (tabValue)="getTabIndex($event)"></app-register
+      ></mat-tab>
+      <mat-tab label="Log in"> <app-login></app-login> </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
