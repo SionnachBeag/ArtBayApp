@@ -1,0 +1,33 @@
+.registerForm {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 390px;
+  width: 350px;
+  margin: 40px;
+  padding: 5px;
+}
+
+.register-button {
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 30px;
+  border: 1px solid black;
+  background-color: rgb(229, 201, 229);
+}
+
+.errorMessage {
+  font-size: 12px;
+  text-align: center;
+  height: 20px;
+}
+
+.serverMessage {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.message {
+  text-align: center;
+  color: purple;
+}
