@@ -1,0 +1,42 @@
+<form
+  [formGroup]="loginForm"
+  #form="ngForm"
+  class="loginForm"
+  (ngSubmit)="onSubmit()"
+>
+  <mat-form-field class="field">
+    <!-- <span matPrefix><fa-icon class="fa" [icon]="faUser"></fa-icon> </span> -->
+    <input
+      matInput
+      formControlName="userName"
+      type="text"
+      id="userName"
+      placeholder="Username"
+    />
+  </mat-form-field>
+  <mat-form-field class="field">
+    <!-- <span matPrefix><fa-icon class="fa" [icon]="faLock"></fa-icon> </span
+    > -->
+    <input
+      matInput
+      formControlName="password"
+      id="password"
+      placeholder="Password"
+      [type]="hide ? 'password' : 'text'"
+    />
+    <!-- <span matSuffix
+      ><fa-icon
+        class="fa eye"
+        [icon]="faEye"
+        (click)="togglePasswordVisibility()"
+      ></fa-icon>
+    </span> -->
+  </mat-form-field>
+  <!-- <span class="error"
+    ><mat-error *ngIf="!loginForm.valid && form.submitted"
+      >*All fields are required.</mat-error
+    ><mat-error>{{ result }}</mat-error></span
+  > -->
+
+  <button class="login-button" mat-flat-button type="submit">Sign In</button>
+</form>
