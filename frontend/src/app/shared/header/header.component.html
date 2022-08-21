@@ -1,1 +1,19 @@
-<p>header works!</p>
+<section class="header-container">
+  <div id="header">
+    <div id="logo">
+      <a routerLink="/">Home</a>
+      <a id="shop-link" routerLink="/shop">Shop</a>
+    </div>
+
+    <div id="reg-log-container">
+      <button
+        *ngIf="authService.getUserName()"
+        mat-flat-button
+        class="logout-button button"
+        (click)="logout()"
+      >
+        Logout
+      </button>
+    </div>
+  </div>
+</section>
