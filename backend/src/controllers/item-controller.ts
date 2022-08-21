@@ -62,7 +62,11 @@ export const itemController = {
       });
   },
 
-  async getItemById(req: Request, res: Response, next: NextFunction) {
+  async getItemById(
+    req: Request,
+    res: Response<IItemsOnSaleViewModel>,
+    next: NextFunction
+  ) {
     const { id } = <{ id: string }>req.params;
     await itemService
       .getItemById(id)
