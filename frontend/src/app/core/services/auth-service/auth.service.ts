@@ -7,6 +7,7 @@ import { IApiResponseMessageModel } from '../../models/IApiResponseMessageModel'
 import { ILoginApiData } from '../../models/ILoginApiData';
 import { ILoginForm } from '../../models/ILoginForm';
 import { IRegisterUser } from '../../models/IRegisterUser';
+import jwt_decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
@@ -67,5 +68,41 @@ export class AuthService {
 
   clearLocalStorage(): void {
     localStorage.clear();
+  }
+
+  logout(): void {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    localStorage.removeItem('artDollars');
+    this.router.navigate(['']);
+  }
+
+  checkLocalStorageData(): void {
+    if (!this.getToken() || !this.getUserName()) {
+      this.logout();
+    }
+  }
+
+  monitorLocalStorageChanges(): void {
+    window.addEventListener('storage', () => {
+      this.logout();
+    });
+  }
+
+  isTokenValid(): boolean {
+    const token: string = this.getToken();
+    const tokenPayload: any = jwt_decode(token);
+    if (Date.now() > tokenPayload.exp * 1000) {
+      this.logout();
+      return false;
+    }
+    return true;
+  }
+
+  isLoggedIn(): boolean {
+    if (this.getToken()) {
+      return true;
+    }
+    return false;
   }
 }
