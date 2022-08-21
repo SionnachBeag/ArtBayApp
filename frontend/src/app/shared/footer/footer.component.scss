@@ -1,0 +1,124 @@
+@import "../../../styles/variables.scss";
+
+p {
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  color: #673ab7;
+}
+
+#footer {
+  display: flex;
+  flex-direction: column;
+
+  #main {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    height: 250px;
+    background-color: rgb(229, 201, 229);
+    color: #673ab7;
+    @media screen and (max-width: $mid-view) {
+      flex-direction: column;
+      height: auto;
+      justify-content: center;
+      align-items: center;
+    }
+    .left-side,
+    .right-side {
+      width: 20%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .center > * {
+      margin-top: 8px;
+    }
+
+    .center {
+      width: 60%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+
+      .social-media {
+        display: flex;
+        flex-direction: row;
+
+        .social-button {
+          background-color: rgb(229, 201, 229);
+          margin-right: 8px;
+          margin-left: 8px;
+          margin-bottom: 8px;
+        }
+
+        .facebook {
+          background: url("../../../assets/icon-facebook1.png") no-repeat;
+          background-size: 100%;
+          background-position: center;
+        }
+        .twitter {
+          background: url("../../../assets/icon-twitter1.png");
+          background-size: 88%;
+          background-position: center;
+        }
+        .instagram {
+          background: url("../../../assets/icon-instagram1.png");
+          background-size: 92%;
+          background-position: center;
+        }
+        .youtube {
+          background: url("../../../assets/icon-youtube1.png") no-repeat;
+          background-size: 88%;
+          background-position: center;
+        }
+      }
+      .name-button {
+        font-size: smaller;
+        background-color: rgb(229, 201, 229);
+        margin-left: 4px;
+        margin-right: 4px;
+        margin-top: 0;
+        padding-left: 8px;
+        padding-right: 8px;
+        text-decoration: none;
+        color: #673ab7;
+        @media screen and (max-width: $mid-view) {
+          width: 160px;
+        }
+      }
+      .name-button {
+        @media screen and (max-width: $mid-view) {
+          margin-top: 4px;
+        }
+      }
+
+      .participiants {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px;
+      }
+      .participiants {
+        @media screen and (max-width: $mid-view) {
+          flex-direction: column;
+        }
+      }
+    }
+  }
+
+  #copyright {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    color: black;
+
+    h5 {
+      margin: 0;
+    }
+  }
+}
