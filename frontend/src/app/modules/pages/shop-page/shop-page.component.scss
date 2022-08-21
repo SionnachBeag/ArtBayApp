@@ -1,14 +1,23 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 100px;
+  margin-top: 50px;
+}
+
 .items-container {
-  margin: 50px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  margin-bottom: 200px;
 }
 
 .title {
   text-align: center;
-  margin: 50px;
+  margin: 50px 0px 100px 0px;
   text-transform: uppercase;
   font-size: 50px;
   font-weight: 700;
