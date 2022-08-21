@@ -20,4 +20,10 @@ export class ItemService {
         this.itemsSubject.next(items);
       });
   }
+
+  getItemById(id: number): Observable<IItemsOnSaleViewModel> {
+    return this.http.get<IItemsOnSaleViewModel>(
+      `${environment.baseUrl}/items/${id}`
+    );
+  }
 }
