@@ -1,1 +1,17 @@
-<p>item works!</p>
+<div class="item-card-container">
+  <div class="img-container">
+    <div
+      class="item-img"
+      style="background: url('http://localhost:3000/{{ itemData.imgUrl }}');
+    background-size: cover;"
+    >
+      <div class="water-mark">@</div>
+    </div>
+  </div>
+  <div class="item-detail-container">
+    <div class="title">{{ itemData.title }}</div>
+    <div class="description">{{ itemData.description }}</div>
+    <div class="price">{{ itemData.price }} ART$</div>
+    <button class="buy-btn" mat-flat-button>BUY</button>
+  </div>
+</div>
