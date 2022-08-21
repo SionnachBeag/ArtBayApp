@@ -12,6 +12,9 @@
     <div class="title">{{ itemData.title }}</div>
     <div class="description">{{ itemData.description }}</div>
     <div class="price">{{ itemData.price }} ART$</div>
+    <a class="view" routerLink="/viewItem" [queryParams]="{ id: itemData?.id }"
+      >View Item</a
+    >
     <button class="buy-btn" mat-flat-button>BUY</button>
   </div>
 </div>
