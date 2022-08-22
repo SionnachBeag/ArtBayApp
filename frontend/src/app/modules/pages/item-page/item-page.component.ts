@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { IItemByIdViewModel } from 'src/app/core/models/IItemByIdViewModel';
-import { IItemsOnSaleViewModel } from 'src/app/core/models/IItemsOnSaleViewModel';
 import { ItemService } from 'src/app/core/services/item-service/item.service';
 
 @Component({
