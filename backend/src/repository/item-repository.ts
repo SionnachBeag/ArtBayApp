@@ -52,4 +52,12 @@ export const itemRepository = {
     );
     return requestedItem[0];
   },
+
+  async buyItem(id: string, buyerId: string): Promise<number> {
+    const repoResponse = await db.query<any>(
+      'UPDATE items SET isSold = true, buyerId = ? WHERE id = ?',
+      [buyerId, id]
+    );
+    return repoResponse.affectedRows;
+  },
 };
