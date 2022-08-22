@@ -4,6 +4,7 @@ import { IItemDomainModel } from '../models/domain-models/IItemDomainModel';
 import { IItemAndBuyerModel } from '../models/IItemAndBuyerModel';
 import { ICreateItemRequestModel } from '../models/request-models/ICreateItemRequestModel';
 import { itemRepository } from '../repository/item-repository';
+import { userRepository } from '../repository/user-repository';
 
 export const itemService = {
   async addItem(newItem: ICreateItemRequestModel): Promise<number> {
@@ -47,6 +48,22 @@ export const itemService = {
   },
 
   async buyItem(id: string, buyerId: string): Promise<number> {
-    return await itemRepository.buyItem(id, buyerId);
+    const buyerMoney = await userRepository.getDollarsByUser(buyerId);
+    const itemData = await itemRepository.getItemById(id);
+    if (itemData.price > buyerMoney) {
+      return Promise.reject({
+        message: `not enough money to buy this item`,
+        status: 400,
+      });
+    }
+    const amountOfSoldItem = await itemRepository.buyItem(id, buyerId);
+    if (amountOfSoldItem > 0) {
+      return await itemRepository.takeMoney(buyerId, itemData.price);
+    } else {
+      return Promise.reject({
+        message: `something went wrong`,
+        status: 404,
+      });
+    }
   },
 };
