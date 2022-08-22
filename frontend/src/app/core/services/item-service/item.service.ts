@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { IItemByIdViewModel } from '../../models/IItemByIdViewModel';
 import { IItemsOnSaleViewModel } from '../../models/IItemsOnSaleViewModel';
 
 @Injectable({
@@ -21,8 +22,8 @@ export class ItemService {
       });
   }
 
-  getItemById(id: number): Observable<IItemsOnSaleViewModel> {
-    return this.http.get<IItemsOnSaleViewModel>(
+  getItemById(id: number): Observable<IItemByIdViewModel> {
+    return this.http.get<IItemByIdViewModel>(
       `${environment.baseUrl}/items/${id}`
     );
   }
