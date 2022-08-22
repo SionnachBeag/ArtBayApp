@@ -1,13 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-// import { ILoginForm } from 'src/app/core/models/ILoginForm';
-// import { AuthService } from 'src/app/core/services/authentication/auth.service';
-// import { ILoginApiData } from 'src/app/core/models/ILoginApiData';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from 'src/app/core/services/auth-service/auth.service';
 import { ILoginForm } from 'src/app/core/models/ILoginForm';
 import { ILoginApiData } from 'src/app/core/models/ILoginApiData';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +13,7 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   result: string = '';
   hide: boolean = true;
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService) {}
 
   loginForm = new FormGroup({
     userName: new FormControl('', Validators.required),
