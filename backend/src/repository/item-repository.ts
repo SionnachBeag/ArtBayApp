@@ -54,7 +54,7 @@ export const itemRepository = {
   },
 
   async buyItem(id: string, buyerId: string): Promise<number> {
-    const repoResponse = await db.query<any>(
+    const repoResponse = await db.query<IDBResultDomainModel>(
       'UPDATE items SET isSold = true, buyerId = ? WHERE id = ?',
       [buyerId, id]
     );
@@ -62,7 +62,7 @@ export const itemRepository = {
   },
 
   async takeMoney(id: string, price: number): Promise<number> {
-    const repoResponse = await db.query<any>(
+    const repoResponse = await db.query<IDBResultDomainModel>(
       'UPDATE users SET artDollars = artDollars - ? WHERE id = ?',
       [`${price}`, id]
     );
