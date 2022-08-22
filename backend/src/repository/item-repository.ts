@@ -60,4 +60,12 @@ export const itemRepository = {
     );
     return repoResponse.affectedRows;
   },
+
+  async takeMoney(id: string, price: number): Promise<number> {
+    const repoResponse = await db.query<any>(
+      'UPDATE users SET artDollars = artDollars - ? WHERE id = ?',
+      [`${price}`, id]
+    );
+    return repoResponse.affectedRows;
+  },
 };
