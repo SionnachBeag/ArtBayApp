@@ -25,7 +25,7 @@ export class RegisterComponent {
   tabValue = new EventEmitter<number>();
   result: string = '';
   errorMessage: string = '';
-  selectedIndex = 0;
+  selectedIndex: number = 0;
   hide: boolean = true;
   hideConfirm: boolean = true;
 
@@ -65,7 +65,7 @@ export class RegisterComponent {
     this.hideConfirm = !this.hideConfirm;
   }
 
-  reset(form: FormGroupDirective) {
+  reset(form: FormGroupDirective): void {
     this.registerForm.reset();
     form.resetForm();
   }
@@ -104,8 +104,9 @@ export class RegisterComponent {
     passwordConfirm: string
   ): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
-      const passwordCtrl = control.get(password);
-      const passwordConfirmCtrl = control.get(passwordConfirm);
+      const passwordCtrl: AbstractControl | null = control.get(password);
+      const passwordConfirmCtrl: AbstractControl | null =
+        control.get(passwordConfirm);
 
       return passwordCtrl &&
         passwordConfirmCtrl &&
