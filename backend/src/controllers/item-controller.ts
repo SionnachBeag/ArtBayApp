@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import { ApiErrorModel } from '../models/ApiErrorModel';
 import { ICreateItemRequestModel } from '../models/request-models/ICreateItemRequestModel';
 import { ICreateItemViewModel } from '../models/view-models/ICreateItemViewModel';
+import { IItemByIdViewModel } from '../models/view-models/IItemByIdViewModel';
 import { IItemsOnSaleViewModel } from '../models/view-models/IItemsOnSaleViewModel';
 import { imgUrlService } from '../services/img-url-service';
 import { itemService } from '../services/item-service';
@@ -64,7 +65,7 @@ export const itemController = {
 
   async getItemById(
     req: Request,
-    res: Response<IItemsOnSaleViewModel>,
+    res: Response<IItemByIdViewModel>,
     next: NextFunction
   ) {
     const { id } = <{ id: string }>req.params;
