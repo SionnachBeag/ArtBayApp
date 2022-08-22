@@ -73,7 +73,7 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    localStorage.removeItem('artDollars');
+    localStorage.removeItem('dollars');
     this.router.navigate(['']);
   }
 
@@ -97,6 +97,12 @@ export class AuthService {
       return false;
     }
     return true;
+  }
+
+  getUserIdFromToken(): number {
+    const token: string = this.getToken();
+    const tokenPayload: any = jwt_decode(token);
+    return tokenPayload.userId;
   }
 
   isLoggedIn(): boolean {
