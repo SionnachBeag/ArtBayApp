@@ -8,8 +8,18 @@ import { AuthService } from 'src/app/core/services/auth-service/auth.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  buyerId!: number;
   constructor(public authService: AuthService, private router: Router) {}
+
+  onClick(): void {
+    if (typeof this.authService.getUserIdFromToken() === 'number') {
+      const id: number = this.authService.getUserIdFromToken();
+      this.router.navigate(['/myItems'], { queryParams: { id: id } });
+    }
+  }
+
+  logout(): void {
+    this.authService.logout();
+  }
 
   ngOnInit(): void {
     this.authService.checkLocalStorageData();
@@ -17,16 +27,5 @@ export class HeaderComponent implements OnInit {
     if (this.authService.isLoggedIn()) {
       this.authService.isTokenValid();
     }
-  }
-
-  onClick() {
-    if (typeof this.authService.getUserIdFromToken() === 'number') {
-      let id = this.authService.getUserIdFromToken();
-      this.router.navigate(['/myItems'], { queryParams: { id: id } });
-    }
-  }
-
-  logout(): void {
-    this.authService.logout();
   }
 }
