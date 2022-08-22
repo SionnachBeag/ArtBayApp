@@ -6,13 +6,11 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./landing-page.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class LandingPageComponent implements OnInit {
+export class LandingPageComponent {
   tabIndex: number = 0;
   constructor() {}
 
   getTabIndex(num: number): void {
     this.tabIndex = num;
   }
-
-  ngOnInit(): void {}
 }
