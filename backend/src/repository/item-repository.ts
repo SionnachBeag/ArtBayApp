@@ -29,6 +29,14 @@ export const itemRepository = {
     return itemsOnSale;
   },
 
+  async listItemsBought(id: string): Promise<IItemDomainModel[]> {
+    const itemsBought = await db.query<IItemDomainModel[]>(
+      'SELECT * FROM items WHERE buyerId = ?',
+      [`${id}`]
+    );
+    return itemsBought;
+  },
+
   async getBuyerName(id: string): Promise<IBuyerDomainModel> {
     const buyerName = await db.query<IBuyerDomainModel[]>(
       'SELECT userName FROM users WHERE id = (SELECT buyerId FROM items WHERE id = ?)',
