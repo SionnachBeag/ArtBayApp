@@ -14,6 +14,10 @@ export const itemService = {
     return await itemRepository.listAllItemsOnSale();
   },
 
+  async listItemsBought(id: string): Promise<IItemDomainModel[]> {
+    return await itemRepository.listItemsBought(id);
+  },
+
   async getItemById(
     id: string
   ): Promise<IItemByIdDomainModel | IItemAndBuyerModel> {
