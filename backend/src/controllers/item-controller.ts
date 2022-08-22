@@ -63,6 +63,20 @@ export const itemController = {
       });
   },
 
+  async listItemsBought(req: Request, res: Response, next: NextFunction) {
+    const { id } = <{ id: string }>req.params;
+    await itemService
+      .listItemsBought(id)
+      .then((data) => {
+        return res.json(data);
+      })
+      .catch((err: ApiErrorModel) => {
+        console.log(err);
+        next(err);
+        return;
+      });
+  },
+
   async getItemById(
     req: Request,
     res: Response<IItemByIdViewModel>,
