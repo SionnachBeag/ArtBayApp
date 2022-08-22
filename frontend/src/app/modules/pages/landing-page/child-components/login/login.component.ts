@@ -4,6 +4,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from 'src/app/core/services/auth-service/auth.service';
 import { ILoginForm } from 'src/app/core/models/ILoginForm';
 import { ILoginApiData } from 'src/app/core/models/ILoginApiData';
+import { WalletService } from 'src/app/core/services/wallet-service/wallet.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,10 @@ import { ILoginApiData } from 'src/app/core/models/ILoginApiData';
 export class LoginComponent {
   result: string = '';
   hide: boolean = true;
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private walletService: WalletService
+  ) {}
 
   loginForm = new FormGroup({
     userName: new FormControl('', Validators.required),
@@ -27,7 +31,9 @@ export class LoginComponent {
   onSubmit(): void {
     const loginForm: ILoginForm = this.loginForm.value;
     this.authService.login(loginForm).subscribe(
-      (messageFromServer: ILoginApiData) => console.log(messageFromServer),
+      (messageFromServer: ILoginApiData) => {
+        this.walletService.getDollarsByUser();
+      },
       (err: HttpErrorResponse) => {
         if (err.status === 307) {
           this.result = `${err.error.message}`;
