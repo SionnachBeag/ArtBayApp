@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { IArtDollarModel } from 'src/app/core/models/IArtDollarModel';
 import { AuthService } from 'src/app/core/services/auth-service/auth.service';
+import { WalletService } from 'src/app/core/services/wallet-service/wallet.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +11,13 @@ import { AuthService } from 'src/app/core/services/auth-service/auth.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(public authService: AuthService, private router: Router) {}
+  artDollarsSubscription!: Subscription;
+  artDollars!: number;
+  constructor(
+    public authService: AuthService,
+    private walletService: WalletService,
+    public router: Router
+  ) {}
 
   onClick(): void {
     if (typeof this.authService.getUserIdFromToken() === 'number') {
@@ -21,11 +30,25 @@ export class HeaderComponent implements OnInit {
     this.authService.logout();
   }
 
+  getArtDollarAmount(): void {
+    this.artDollarsSubscription =
+      this.walletService.artDollarsObservable$.subscribe(
+        (artDollarsFromObservable: IArtDollarModel) => {
+          this.artDollars = artDollarsFromObservable.artDollars;
+        }
+      );
+  }
+
   ngOnInit(): void {
+    this.getArtDollarAmount();
     this.authService.checkLocalStorageData();
     this.authService.monitorLocalStorageChanges();
     if (this.authService.isLoggedIn()) {
       this.authService.isTokenValid();
     }
+  }
+
+  ngOnDestroy() {
+    this.artDollarsSubscription.unsubscribe();
   }
 }
