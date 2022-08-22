@@ -3,6 +3,7 @@ import { ApiErrorModel } from '../models/ApiErrorModel';
 import { IUserDomainModel } from '../models/domain-models/IUserDomainModel';
 import { ILoginRequestModel } from '../models/request-models/ILoginRequestModel';
 import { IRegisterRequestModel } from '../models/request-models/IRegisterRequestModel';
+import { IDollarsByUserViewModel } from '../models/view-models/IDollarsByUserViewModel';
 import { ILoginViewModel } from '../models/view-models/ILoginViewModel';
 import { ISuccessViewModel } from '../models/view-models/ISuccessViewModel';
 
@@ -82,6 +83,25 @@ export const userController = {
           artDollars: userData.artDollars,
           token: jwtToken,
         });
+      })
+      .catch((err: ApiErrorModel) => {
+        console.log(err);
+        next(err);
+        return;
+      });
+  },
+
+  async getDollarsByUser(
+    req: Request,
+    res: Response<IDollarsByUserViewModel>,
+    next: NextFunction
+  ) {
+    const { id } = <{ id: string }>req.params;
+
+    await userService
+      .getDollarsByUser(id)
+      .then((data) => {
+        return res.json(data);
       })
       .catch((err: ApiErrorModel) => {
         console.log(err);
