@@ -24,6 +24,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'myItems',
+    loadChildren: () =>
+      import('./modules/pages/my-items-page/my-items-page.module').then(
+        (mod) => mod.MyItemsPageModule
+      ),
+  },
+  {
     path: 'viewItem',
     loadChildren: () =>
       import('./modules/pages/item-page/item-page.module').then(
