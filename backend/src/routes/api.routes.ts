@@ -7,6 +7,7 @@ import {
   addItemRequestKeys,
   loginRequestKeys,
   idParamKey,
+  buyItemRequestKey,
 } from '../helpers/request-keys';
 import { itemController } from '../controllers/item-controller';
 import tokenAuthentication from '../middlewares/token-authentication';
@@ -25,6 +26,11 @@ apiRouter.route('/login').post(requestBodyValidator(loginRequestKeys, 400));
 apiRouter.post('/login', userController.login);
 
 apiRouter
+  .route('/users/:id')
+  .get(requestParamValidator(idParamKey, 400), tokenAuthentication());
+apiRouter.get('/users/:id', userController.getDollarsByUser);
+
+apiRouter
   .route('/items')
   .post(requestBodyValidator(addItemRequestKeys, 400), tokenAuthentication());
 apiRouter.post('/items', itemController.addItem);
@@ -33,8 +39,22 @@ apiRouter.route('/items').get(tokenAuthentication());
 apiRouter.get('/items', itemController.listAllItemsOnSale);
 
 apiRouter
+  .route('/myItems/:id')
+  .get(requestParamValidator(idParamKey, 400), tokenAuthentication());
+apiRouter.get('/myItems/:id', itemController.listItemsBought);
+
+apiRouter
   .route('/items/:id')
   .get(requestParamValidator(idParamKey, 400), tokenAuthentication());
 apiRouter.get('/items/:id', itemController.getItemById);
+
+apiRouter
+  .route('/buyItem/:id')
+  .put(
+    requestParamValidator(idParamKey, 400),
+    requestBodyValidator(buyItemRequestKey, 400),
+    tokenAuthentication()
+  );
+apiRouter.put('/buyItem/:id', itemController.buyItem);
 
 export default apiRouter;
