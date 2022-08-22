@@ -45,4 +45,8 @@ export const itemService = {
     }
     return itemById;
   },
+
+  async buyItem(id: string, buyerId: string): Promise<number> {
+    return await itemRepository.buyItem(id, buyerId);
+  },
 };
