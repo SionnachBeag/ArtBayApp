@@ -12,7 +12,7 @@ import { ItemService } from 'src/app/core/services/item-service/item.service';
 })
 export class ItemComponent {
   @Input() itemData!: IItemsOnSaleViewModel;
-  @Input() isShow!: boolean;
+  @Input() isDisplayed!: boolean;
   constructor(
     private authService: AuthService,
     private itemService: ItemService,
