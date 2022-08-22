@@ -8,6 +8,9 @@
     </div>
 
     <div id="reg-log-container">
+      <div *ngIf="router.url !== '/'" class="dollars">
+        My Art$: {{ artDollars }}
+      </div>
       <button
         *ngIf="authService.getUserName()"
         mat-flat-button
