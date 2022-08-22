@@ -4,7 +4,8 @@ import { IUserDomainModel } from '../models/domain-models/IUserDomainModel';
 import { ILoginRequestModel } from '../models/request-models/ILoginRequestModel';
 import { IRegisterRequestModel } from '../models/request-models/IRegisterRequestModel';
 import { ILoginViewModel } from '../models/view-models/ILoginViewModel';
-import { IRegisterViewModel } from '../models/view-models/IRegisterViewModel';
+import { ISuccessViewModel } from '../models/view-models/ISuccessViewModel';
+
 import { emailService } from '../services/email-service';
 import { jwtService } from '../services/JWT-service';
 import { passwordService } from '../services/password-service';
@@ -13,7 +14,7 @@ import { userService } from '../services/user-service';
 export const userController = {
   async register(
     req: Request<IRegisterRequestModel>,
-    res: Response<IRegisterViewModel>,
+    res: Response<ISuccessViewModel>,
     next: NextFunction
   ): Promise<void> {
     const newUser: IRegisterRequestModel = {
