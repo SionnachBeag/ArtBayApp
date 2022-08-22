@@ -11,6 +11,7 @@ import { ItemService } from 'src/app/core/services/item-service/item.service';
 export class ShopPageComponent implements OnInit {
   itemsSubscription!: Subscription;
   items: IItemsOnSaleViewModel[] = [];
+  isDisplayed: boolean = true;
   constructor(private itemService: ItemService) {}
 
   ngOnInit(): void {
