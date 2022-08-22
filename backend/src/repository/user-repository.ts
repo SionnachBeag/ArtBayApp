@@ -29,4 +29,12 @@ export const userRepository = {
     );
     return repoResponse;
   },
+
+  async getDollarsByUser(id: string): Promise<number> {
+    const dollarsByUser = await db.query<IUserDomainModel[]>(
+      'SELECT * FROM users WHERE id = ?',
+      [id]
+    );
+    return dollarsByUser[0].artDollars;
+  },
 };
