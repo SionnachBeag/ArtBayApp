@@ -15,6 +15,13 @@
     <a class="view" routerLink="/viewItem" [queryParams]="{ id: itemData?.id }"
       >View Item</a
     >
-    <button class="buy-btn" mat-flat-button>BUY</button>
+    <button
+      *ngIf="isDisplayed"
+      class="buy-btn"
+      mat-flat-button
+      (click)="onClick()"
+    >
+      BUY
+    </button>
   </div>
 </div>
