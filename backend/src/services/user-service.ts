@@ -1,4 +1,5 @@
 import { IDBResultDomainModel } from '../models/domain-models/IDBResultDomainModel';
+import { IDollarsModel } from '../models/domain-models/IDollarsModel';
 import { IUserDomainModel } from '../models/domain-models/IUserDomainModel';
 import { ILoginRequestModel } from '../models/request-models/ILoginRequestModel';
 import { IRegisterRequestModel } from '../models/request-models/IRegisterRequestModel';
@@ -49,5 +50,13 @@ export const userService = {
       });
     }
     return userDataByUserName;
+  },
+
+  async getDollarsByUser(id: string): Promise<IDollarsModel> {
+    const repoResponse = await userRepository.getDollarsByUser(id);
+    const dollarObj: IDollarsModel = {
+      artDollars: repoResponse,
+    };
+    return dollarObj;
   },
 };
