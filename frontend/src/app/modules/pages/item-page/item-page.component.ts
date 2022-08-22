@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { IItemByIdViewModel } from 'src/app/core/models/IItemByIdViewModel';
 import { IItemsOnSaleViewModel } from 'src/app/core/models/IItemsOnSaleViewModel';
 import { ItemService } from 'src/app/core/services/item-service/item.service';
 
@@ -11,7 +12,7 @@ import { ItemService } from 'src/app/core/services/item-service/item.service';
 })
 export class ItemPageComponent implements OnInit {
   itemsSubscription!: Subscription;
-  item!: IItemsOnSaleViewModel;
+  item!: IItemByIdViewModel;
   id!: number;
 
   constructor(
@@ -38,7 +39,7 @@ export class ItemPageComponent implements OnInit {
 
     this.itemService
       .getItemById(this.id)
-      .subscribe((response: IItemsOnSaleViewModel) => {
+      .subscribe((response: IItemByIdViewModel) => {
         this.item = response;
       });
   }
