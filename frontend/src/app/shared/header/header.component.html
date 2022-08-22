@@ -2,7 +2,9 @@
   <div id="header">
     <div id="logo">
       <a routerLink="/">Home</a>
-      <a id="shop-link" routerLink="/shop">Shop</a>
+      <a routerLink="/shop">Shop</a>
+      <a (click)="onClick()">My Items</a>
+      <a routerLink="/manageItems">My Items On Sale</a>
     </div>
 
     <div id="reg-log-container">
