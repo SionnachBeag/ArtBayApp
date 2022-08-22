@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginAuthGuard } from './core/guards/login-auth-guard';
 
 const routes: Routes = [
   {
@@ -11,6 +12,7 @@ const routes: Routes = [
   },
   {
     path: 'shop',
+    canActivate: [LoginAuthGuard],
     loadChildren: () =>
       import('./modules/pages/shop-page/shop-page.module').then(
         (mod) => mod.ShopPageModule
@@ -18,6 +20,7 @@ const routes: Routes = [
   },
   {
     path: 'manageItems',
+    canActivate: [LoginAuthGuard],
     loadChildren: () =>
       import('./modules/pages/manage-items-page/manage-items-page.module').then(
         (mod) => mod.ManageItemsPageModule
@@ -25,6 +28,7 @@ const routes: Routes = [
   },
   {
     path: 'myItems',
+    canActivate: [LoginAuthGuard],
     loadChildren: () =>
       import('./modules/pages/my-items-page/my-items-page.module').then(
         (mod) => mod.MyItemsPageModule
@@ -32,6 +36,7 @@ const routes: Routes = [
   },
   {
     path: 'viewItem',
+    canActivate: [LoginAuthGuard],
     loadChildren: () =>
       import('./modules/pages/item-page/item-page.module').then(
         (mod) => mod.ItemPageModule
