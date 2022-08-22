@@ -11,6 +11,7 @@ import { ItemService } from 'src/app/core/services/item-service/item.service';
 export class MyItemsPageComponent implements OnInit {
   itemsBought: IItemsOnSaleViewModel[] = [];
   id!: number;
+  isDisplayed: boolean = false;
   constructor(
     private itemService: ItemService,
     private route: ActivatedRoute,
