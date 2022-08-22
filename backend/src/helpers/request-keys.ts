@@ -10,4 +10,6 @@ export const addItemRequestKeys: string[] = [
   'sellerId',
 ];
 
+export const buyItemRequestKey: string[] = ['buyerId'];
+
 export const idParamKey: string[] = ['id'];
