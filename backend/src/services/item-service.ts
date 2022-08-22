@@ -22,7 +22,7 @@ export const itemService = {
   async getItemById(
     id: string
   ): Promise<IItemByIdDomainModel | IItemAndBuyerModel> {
-    let itemById = await itemRepository.getItemById(id);
+    let itemById: IItemByIdDomainModel = await itemRepository.getItemById(id);
     if (!itemById) {
       return Promise.reject({
         message: 'item is not found',
@@ -48,15 +48,15 @@ export const itemService = {
   },
 
   async buyItem(id: string, buyerId: string): Promise<number> {
-    const buyerMoney = await userRepository.getDollarsByUser(buyerId);
-    const itemData = await itemRepository.getItemById(id);
+    const buyerMoney: number = await userRepository.getDollarsByUser(buyerId);
+    const itemData: IItemByIdDomainModel = await itemRepository.getItemById(id);
     if (itemData.price > buyerMoney) {
       return Promise.reject({
         message: `not enough money to buy this item`,
         status: 400,
       });
     }
-    const amountOfSoldItem = await itemRepository.buyItem(id, buyerId);
+    const amountOfSoldItem: number = await itemRepository.buyItem(id, buyerId);
     if (amountOfSoldItem > 0) {
       return await itemRepository.takeMoney(buyerId, itemData.price);
     } else {
