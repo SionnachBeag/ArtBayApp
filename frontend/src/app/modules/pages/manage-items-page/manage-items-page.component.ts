@@ -11,7 +11,7 @@ import { IItemFormInput } from 'src/app/core/models/IItemFormInput';
   templateUrl: './manage-items-page.component.html',
   styleUrls: ['./manage-items-page.component.scss'],
 })
-export class ManageItemsPageComponent implements OnInit {
+export class ManageItemsPageComponent {
   message: string = '';
   itemForm = new FormGroup({
     title: new FormControl('', Validators.required),
@@ -24,8 +24,6 @@ export class ManageItemsPageComponent implements OnInit {
     private authService: AuthService,
     private router: Router
   ) {}
-
-  ngOnInit(): void {}
 
   onSubmit(): void {
     if (typeof this.authService.getUserIdFromToken() === 'number') {
