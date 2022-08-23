@@ -19,10 +19,17 @@ export class HeaderComponent implements OnInit {
     public router: Router
   ) {}
 
-  onClick(): void {
+  toMyItems(): void {
     if (typeof this.authService.getUserIdFromToken() === 'number') {
       const id: number = this.authService.getUserIdFromToken();
       this.router.navigate(['/myItems'], { queryParams: { id: id } });
+    }
+  }
+
+  toManageItems(): void {
+    if (typeof this.authService.getUserIdFromToken() === 'number') {
+      const id: number = this.authService.getUserIdFromToken();
+      this.router.navigate(['/manageItems'], { queryParams: { id: id } });
     }
   }
 
