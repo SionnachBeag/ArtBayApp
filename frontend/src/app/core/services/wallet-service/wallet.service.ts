@@ -18,16 +18,19 @@ export class WalletService {
   constructor(private authService: AuthService, private http: HttpClient) {}
 
   getDollarsByUser(): void {
-    if (!this.authService.getToken()) {
-      this.artDollarsSubject.next({
-        artDollars: 0,
-      });
-    }
     if (typeof this.authService.getUserIdFromToken() === 'number') {
       const userId: number = this.authService.getUserIdFromToken();
       this.http
         .get<IArtDollarModel>(`${environment.baseUrl}/users/${userId}`)
         .subscribe((response) => this.artDollarsSubject.next(response));
+    }
+  }
+
+  syncSubjectAndLocalStore() {
+    if (this.authService.isLoggedIn()) {
+      this.artDollarsSubject.next({
+        artDollars: parseInt(this.authService.getArtDollars()),
+      });
     }
   }
 }
