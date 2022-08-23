@@ -9,6 +9,7 @@ import { IDeleteItemDataApi } from '../../models/IDeleteItemDataApi';
 import { IItemByIdViewModel } from '../../models/IItemByIdViewModel';
 import { IItemsOnSaleViewModel } from '../../models/IItemsOnSaleViewModel';
 import { ISuccessViewModel } from '../../models/ISuccessViewModel';
+import { IUpdateItem } from '../../models/IUpdateItem';
 
 @Injectable({
   providedIn: 'root',
@@ -76,6 +77,25 @@ export class ItemService {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
       }
     );
+  }
+
+  updateItem(id: number, item: IUpdateItem): void {
+    this.http
+      .put<ISuccessViewModel>(`${environment.baseUrl}/items/${id}`, item, {
+        headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      })
+      .subscribe(() => {
+        const itemsByUserSubject: IItemsOnSaleViewModel[] =
+          this.itemsByUserSubject.getValue();
+        const index: number = itemsByUserSubject.findIndex(
+          (item) => item.id === id
+        );
+        itemsByUserSubject[index] = {
+          id: id,
+          isSold: false,
+          ...item,
+        };
+      });
   }
 
   deleteItemById(id: number): void {
