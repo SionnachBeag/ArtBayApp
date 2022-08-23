@@ -3,7 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from 'src/app/core/services/auth-service/auth.service';
 import { ILoginForm } from 'src/app/core/models/ILoginForm';
-import { ILoginApiData } from 'src/app/core/models/ILoginApiData';
 import { WalletService } from 'src/app/core/services/wallet-service/wallet.service';
 
 @Component({
