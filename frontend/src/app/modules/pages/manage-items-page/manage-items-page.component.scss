@@ -1,48 +1,65 @@
-.form-container {
+.container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
-  margin-top: 160px;
+  margin: 130px 0px;
 
-  form {
-    border: 1px solid black;
-    border-radius: 8px;
+  .form-container {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
-    margin: 40px;
-    padding: 20px;
-    background-color: white;
-    width: 500px;
-    height: 600px;
+    width: 100%;
+    height: 100%;
 
-    p {
+    form {
+      border: 1px solid black;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 40px;
+      padding: 20px;
+      background-color: white;
+      width: 500px;
+      height: 600px;
+
+      p {
+        margin: 30px 0px;
+        font-size: 24px;
+        font-family: Roboto, Arial, Helvetica, sans-serif;
+        font-weight: 500;
+      }
+
+      .field {
+        margin-top: 20px;
+        width: 70%;
+      }
+
+      .add-item-button {
+        font-size: 18px;
+        font-weight: 700;
+        margin-top: 30px;
+        border: 1px solid black;
+        background-color: rgb(229, 201, 229);
+      }
+
+      .message {
+        text-align: center;
+        color: purple;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .manage-container {
+    .h1-title {
       margin: 30px 0px;
       font-size: 24px;
       font-family: Roboto, Arial, Helvetica, sans-serif;
       font-weight: 500;
-    }
-
-    .field {
-      margin-top: 20px;
-      width: 70%;
-    }
-
-    .add-item-button {
-      font-size: 18px;
-      font-weight: 700;
-      margin-top: 30px;
-      border: 1px solid black;
-      background-color: rgb(229, 201, 229);
-    }
-
-    .message {
       text-align: center;
-      color: purple;
-      font-size: 16px;
     }
   }
 }
