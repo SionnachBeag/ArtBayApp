@@ -5,7 +5,7 @@
   (ngSubmit)="onSubmit(form)"
 >
   <mat-form-field class="registerFormField">
-    <!-- <span matPrefix><fa-icon class="fa" [icon]="faUser"></fa-icon></span> -->
+    <span matPrefix><mat-icon class="icon user">person</mat-icon> </span>
     <input
       type="text"
       matInput
@@ -15,7 +15,7 @@
     />
   </mat-form-field>
   <mat-form-field class="registerFormField">
-    <!-- <span matPrefix><fa-icon class="fa" [icon]="faEnvelope"></fa-icon></span> -->
+    <span matPrefix><mat-icon class="icon email">email</mat-icon></span>
     <input
       type="text"
       matInput
@@ -26,7 +26,7 @@
     />
   </mat-form-field>
   <mat-form-field class="registerFormField">
-    <!-- <span matPrefix><fa-icon class="fa" [icon]="faLock"></fa-icon></span> -->
+    <span matPrefix><mat-icon class="icon lock">lock</mat-icon> </span>
     <input
       type="password"
       matInput
@@ -36,16 +36,14 @@
       required
       [type]="hide ? 'password' : 'text'"
     />
-    <!-- <span matSuffix
-      ><fa-icon
-        class="fa eye"
-        [icon]="faEye"
-        (click)="togglePasswordVisibility()"
-      ></fa-icon>
-    </span> -->
+    <span matSuffix
+      ><mat-icon class="icon eye" (click)="togglePasswordVisibility()">{{
+        hide ? "visibility" : "visibility_off"
+      }}</mat-icon>
+    </span>
   </mat-form-field>
   <mat-form-field class="registerFormField">
-    <!-- <span matPrefix><fa-icon class="fa" [icon]="faLock"></fa-icon></span> -->
+    <span matPrefix><mat-icon class="icon lock">lock</mat-icon> </span>
     <input
       type="password"
       matInput
@@ -55,13 +53,11 @@
       required
       [type]="hideConfirm ? 'password' : 'text'"
     />
-    <!-- <span matSuffix
-      ><fa-icon
-        class="fa eye"
-        [icon]="faEyeConfirm"
-        (click)="togglePasswordConfirmVisibility()"
-      ></fa-icon>
-    </span> -->
+    <span matSuffix
+      ><mat-icon class="icon eye" (click)="togglePasswordConfirmVisibility()">{{
+        hideConfirm ? "visibility" : "visibility_off"
+      }}</mat-icon>
+    </span>
   </mat-form-field>
   <span class="message errorMessage" *ngIf="!registerForm.valid">{{
     errorMessage
