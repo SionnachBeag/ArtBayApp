@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { IBuyItemModel } from '../../models/IBuyItemModel';
 import { ICreateItem } from '../../models/ICreateItem';
 import { ICreateItemViewModel } from '../../models/ICreateItemViewModel';
+import { IDeleteItemDataApi } from '../../models/IDeleteItemDataApi';
 import { IItemByIdViewModel } from '../../models/IItemByIdViewModel';
 import { IItemsOnSaleViewModel } from '../../models/IItemsOnSaleViewModel';
 import { ISuccessViewModel } from '../../models/ISuccessViewModel';
@@ -16,6 +17,10 @@ export class ItemService {
   private itemsSubject = new BehaviorSubject<IItemsOnSaleViewModel[]>([]);
   itemsObservable$: Observable<IItemsOnSaleViewModel[]> =
     this.itemsSubject.asObservable();
+
+  private itemsByUserSubject = new BehaviorSubject<IItemsOnSaleViewModel[]>([]);
+  itemsByUserObservable$: Observable<IItemsOnSaleViewModel[]> =
+    this.itemsByUserSubject.asObservable();
 
   constructor(private http: HttpClient) {}
   addItem(input: ICreateItem): void {
@@ -43,6 +48,14 @@ export class ItemService {
       });
   }
 
+  listItemsByUser(id: number): void {
+    this.http
+      .get<IItemsOnSaleViewModel[]>(`${environment.baseUrl}/itemsByUser/${id}`)
+      .subscribe((items: IItemsOnSaleViewModel[]) => {
+        this.itemsByUserSubject.next(items);
+      });
+  }
+
   listItemsBought(id: number): Observable<IItemsOnSaleViewModel[]> {
     return this.http.get<IItemsOnSaleViewModel[]>(
       `${environment.baseUrl}/myItems/${id}`
@@ -63,5 +76,20 @@ export class ItemService {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
       }
     );
+  }
+
+  deleteItemById(id: number): void {
+    this.http
+      .delete<IDeleteItemDataApi>(`${environment.baseUrl}/items/${id}`, {
+        headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      })
+      .subscribe(() => {
+        const itemsByUserSubject: IItemsOnSaleViewModel[] =
+          this.itemsByUserSubject.getValue();
+        const index: number = itemsByUserSubject.findIndex(
+          (item) => item.id === id
+        );
+        itemsByUserSubject.splice(index, 1);
+      });
   }
 }
