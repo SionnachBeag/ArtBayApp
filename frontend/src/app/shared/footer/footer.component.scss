@@ -5,7 +5,7 @@ p {
 }
 a {
   text-decoration: none;
-  color: #673ab7;
+  color: $dark-lilac-color;
 }
 
 #footer {
@@ -16,8 +16,8 @@ a {
     display: flex;
     width: 100%;
     justify-content: space-evenly;
-    background-color: rgb(229, 201, 229);
-    color: #673ab7;
+    background-color: $light-lilac-color;
+    color: $dark-lilac-color;
     @media screen and (max-width: $mid-view) {
       flex-direction: column;
       height: auto;
@@ -48,7 +48,7 @@ a {
         flex-direction: row;
 
         .social-button {
-          background-color: rgb(229, 201, 229);
+          background-color: $light-lilac-color;
           margin-right: 8px;
           margin-left: 8px;
           margin-bottom: 8px;
@@ -77,14 +77,14 @@ a {
       }
       .name-button {
         font-size: smaller;
-        background-color: rgb(229, 201, 229);
+        background-color: $light-lilac-color;
         margin-left: 4px;
         margin-right: 4px;
         margin-top: 0;
         padding-left: 8px;
         padding-right: 8px;
         text-decoration: none;
-        color: #673ab7;
+        color: $dark-lilac-color;
         @media screen and (max-width: $mid-view) {
           width: 160px;
         }
@@ -113,8 +113,8 @@ a {
   #copyright {
     display: flex;
     justify-content: center;
-    background-color: white;
-    color: black;
+    background-color: $white-color;
+    color: $black-color;
 
     h5 {
       margin: 0;
