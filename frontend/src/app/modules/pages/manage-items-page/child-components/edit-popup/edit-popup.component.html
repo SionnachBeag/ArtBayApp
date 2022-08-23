@@ -1,0 +1,37 @@
+<div class="form-container">
+  <form [formGroup]="editItemForm" class="editItemForm" (ngSubmit)="onSubmit()">
+    <p>Edit Details Of Your Item</p>
+    <mat-form-field class="field">
+      <input
+        matInput
+        formControlName="title"
+        type="text"
+        id="title"
+        placeholder="title"
+      />
+    </mat-form-field>
+    <mat-form-field class="field">
+      <input
+        matInput
+        formControlName="description"
+        id="description"
+        placeholder="description"
+      />
+    </mat-form-field>
+    <mat-form-field class="field">
+      <input
+        matInput
+        formControlName="imgUrl"
+        id="imgUrl"
+        placeholder="image url"
+      />
+    </mat-form-field>
+    <mat-form-field class="field">
+      <input matInput formControlName="price" id="price" placeholder="price" />
+    </mat-form-field>
+    <button class="add-item-button" mat-flat-button type="submit">
+      Submit
+    </button>
+    <p class="message" *ngIf="message.length > 0">{{ message }}</p>
+  </form>
+</div>
