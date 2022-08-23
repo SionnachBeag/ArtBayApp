@@ -37,6 +37,14 @@ export const itemRepository = {
     return itemsBought;
   },
 
+  async listItemsByUser(id: string): Promise<IItemDomainModel[]> {
+    const itemsByUser = await db.query<IItemDomainModel[]>(
+      'SELECT * FROM items WHERE sellerId = ? AND isSold = false',
+      [`${id}`]
+    );
+    return itemsByUser;
+  },
+
   async getBuyerName(id: string): Promise<IBuyerDomainModel> {
     const buyerName = await db.query<IBuyerDomainModel[]>(
       'SELECT userName FROM users WHERE id = (SELECT buyerId FROM items WHERE id = ?)',
@@ -67,5 +75,13 @@ export const itemRepository = {
       [`${price}`, id]
     );
     return repoResponse.affectedRows;
+  },
+
+  async deleteItemById(id: string): Promise<number> {
+    const deletedItem = await db.query<IDBResultDomainModel>(
+      'DELETE FROM items WHERE id = ?',
+      [id]
+    );
+    return deletedItem.affectedRows;
   },
 };
