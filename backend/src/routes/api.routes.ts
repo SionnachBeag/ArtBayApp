@@ -64,6 +64,15 @@ apiRouter.put('/buyItem/:id', itemController.buyItem);
 
 apiRouter
   .route('/items/:id')
+  .put(
+    requestParamValidator(idParamKey, 400),
+    requestBodyValidator(addItemRequestKeys, 400),
+    tokenAuthentication()
+  );
+apiRouter.put('/items/:id', itemController.updateItem);
+
+apiRouter
+  .route('/items/:id')
   .delete(requestParamValidator(idParamKey, 400), tokenAuthentication());
 apiRouter.delete('/items/:id', itemController.deleteItemById);
 
