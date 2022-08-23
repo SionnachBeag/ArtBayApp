@@ -1,3 +1,5 @@
+@import "../../../../../../styles/variables.scss";
+
 .registerForm {
   display: flex;
   flex-direction: column;
@@ -5,34 +7,36 @@
   width: 350px;
   margin: 40px;
   padding: 5px;
-}
 
-.register-button {
-  font-size: 18px;
-  font-weight: 700;
-  margin-top: 30px;
-  border: 1px solid black;
-  background-color: rgb(229, 201, 229);
-}
+  .registerFormField {
+    .email,
+    .lock,
+    .user {
+      margin-right: 10px;
+    }
+  }
 
-.errorMessage {
-  font-size: 12px;
-  text-align: center;
-  height: 20px;
-}
+  .register-button {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 30px;
+    border: 1px solid $black-color;
+    background-color: $light-lilac-color;
+  }
 
-.serverMessage {
-  text-align: center;
-  margin-top: 20px;
-}
+  .errorMessage {
+    font-size: 12px;
+    text-align: center;
+    height: 20px;
+  }
 
-.message {
-  text-align: center;
-  color: purple;
-}
+  .serverMessage {
+    text-align: center;
+    margin-top: 20px;
+  }
 
-.email,
-.lock,
-.user {
-  margin-right: 10px;
+  .message {
+    text-align: center;
+    color: $purple-color;
+  }
 }
