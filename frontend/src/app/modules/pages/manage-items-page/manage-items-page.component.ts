@@ -2,16 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ItemService } from 'src/app/core/services/item-service/item.service';
 import { AuthService } from 'src/app/core/services/auth-service/auth.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ICreateItem } from 'src/app/core/models/ICreateItem';
 import { IItemFormInput } from 'src/app/core/models/IItemFormInput';
+import { IItemsOnSaleViewModel } from 'src/app/core/models/IItemsOnSaleViewModel';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-manage-items-page',
   templateUrl: './manage-items-page.component.html',
   styleUrls: ['./manage-items-page.component.scss'],
 })
-export class ManageItemsPageComponent {
+export class ManageItemsPageComponent implements OnInit {
+  itemsByUser: IItemsOnSaleViewModel[] = [];
+  id!: number;
+  itemsByUserSubscription!: Subscription;
   message: string = '';
   itemForm = new FormGroup({
     title: new FormControl('', Validators.required),
@@ -22,7 +27,8 @@ export class ManageItemsPageComponent {
   constructor(
     private itemService: ItemService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   onSubmit(): void {
@@ -36,5 +42,27 @@ export class ManageItemsPageComponent {
       this.itemService.addItem(formattedForm);
       this.router.navigate(['/shop']);
     }
+  }
+
+  ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      try {
+        this.id = parseInt(params['id']);
+      } catch (err) {
+        this.router.navigateByUrl('/pageNotFound');
+        return;
+      }
+    });
+    this.itemService.listItemsByUser(this.id);
+    this.itemsByUserSubscription =
+      this.itemService.itemsByUserObservable$.subscribe(
+        (observableResponse: IItemsOnSaleViewModel[]) => {
+          this.itemsByUser = observableResponse;
+        }
+      );
+  }
+
+  ngOnDestroy() {
+    this.itemsByUserSubscription.unsubscribe();
   }
 }
