@@ -46,6 +46,7 @@ export class HeaderComponent implements OnInit {
     if (this.authService.isLoggedIn()) {
       this.authService.isTokenValid();
     }
+    this.walletService.syncSubjectAndLocalStore();
   }
 
   ngOnDestroy() {
