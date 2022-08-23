@@ -1,9 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { IBuyItemModel } from 'src/app/core/models/IBuyItemModel';
 import { IItemsOnSaleViewModel } from 'src/app/core/models/IItemsOnSaleViewModel';
 import { AuthService } from 'src/app/core/services/auth-service/auth.service';
 import { ItemService } from 'src/app/core/services/item-service/item.service';
+import { WalletService } from 'src/app/core/services/wallet-service/wallet.service';
 
 @Component({
   selector: 'app-item',
@@ -15,6 +16,7 @@ export class ItemComponent {
   @Input() isDisplayed!: boolean;
   constructor(
     private authService: AuthService,
+    private walletService: WalletService,
     private itemService: ItemService,
     private router: Router
   ) {}
@@ -32,7 +34,12 @@ export class ItemComponent {
             this.router.navigate(['/myItems'], {
               queryParams: { id: buyerId },
             });
-            console.log(response.message);
+            this.authService.setArtDollars(
+              `${
+                parseInt(this.authService.getArtDollars()) - this.itemData.price
+              }`
+            );
+            this.walletService.syncSubjectAndLocalStore();
           }
         });
     }
