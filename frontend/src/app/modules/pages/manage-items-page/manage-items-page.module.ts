@@ -6,9 +6,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { ManageItemComponent } from './child-components/manage-item/manage-item.component';
 
 @NgModule({
-  declarations: [ManageItemsPageComponent],
+  declarations: [ManageItemsPageComponent, ManageItemComponent],
   imports: [
     CommonModule,
     ManageItemsPageRoutingModule,
