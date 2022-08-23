@@ -44,6 +44,11 @@ apiRouter
 apiRouter.get('/myItems/:id', itemController.listItemsBought);
 
 apiRouter
+  .route('/itemsByUser/:id')
+  .get(requestParamValidator(idParamKey, 400), tokenAuthentication());
+apiRouter.get('/itemsByUser/:id', itemController.listItemsByUser);
+
+apiRouter
   .route('/items/:id')
   .get(requestParamValidator(idParamKey, 400), tokenAuthentication());
 apiRouter.get('/items/:id', itemController.getItemById);
@@ -56,5 +61,10 @@ apiRouter
     tokenAuthentication()
   );
 apiRouter.put('/buyItem/:id', itemController.buyItem);
+
+apiRouter
+  .route('/items/:id')
+  .delete(requestParamValidator(idParamKey, 400), tokenAuthentication());
+apiRouter.delete('/items/:id', itemController.deleteItemById);
 
 export default apiRouter;
