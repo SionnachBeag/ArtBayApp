@@ -3,6 +3,7 @@ import { IItemByIdDomainModel } from '../models/domain-models/IItemByIdDomainMod
 import { IItemDomainModel } from '../models/domain-models/IItemDomainModel';
 import { IItemAndBuyerModel } from '../models/IItemAndBuyerModel';
 import { ICreateItemRequestModel } from '../models/request-models/ICreateItemRequestModel';
+import { IUpdateItemRequestModel } from '../models/request-models/IUpdateItemRequestModel';
 import { itemRepository } from '../repository/item-repository';
 import { userRepository } from '../repository/user-repository';
 
@@ -73,6 +74,21 @@ export const itemService = {
 
   async deleteItemById(id: string): Promise<number | undefined> {
     return await itemRepository.deleteItemById(id).then((numOfItems) => {
+      if (numOfItems === 0) {
+        return Promise.reject({
+          message: 'This ID does not exist',
+          status: 404,
+        });
+      }
+      return numOfItems;
+    });
+  },
+
+  async updateItem(
+    id: string,
+    item: IUpdateItemRequestModel
+  ): Promise<number | undefined> {
+    return await itemRepository.updateItem(id, item).then((numOfItems) => {
       if (numOfItems === 0) {
         return Promise.reject({
           message: 'This ID does not exist',
