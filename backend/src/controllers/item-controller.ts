@@ -65,10 +65,32 @@ export const itemController = {
       });
   },
 
-  async listItemsBought(req: Request, res: Response, next: NextFunction) {
+  async listItemsBought(
+    req: Request,
+    res: Response<IItemsOnSaleViewModel[]>,
+    next: NextFunction
+  ) {
     const { id } = <{ id: string }>req.params;
     await itemService
       .listItemsBought(id)
+      .then((data) => {
+        return res.json(data);
+      })
+      .catch((err: ApiErrorModel) => {
+        console.log(err);
+        next(err);
+        return;
+      });
+  },
+
+  async listItemsByUser(
+    req: Request,
+    res: Response<IItemsOnSaleViewModel[]>,
+    next: NextFunction
+  ) {
+    const { id } = <{ id: string }>req.params;
+    await itemService
+      .listItemsByUser(id)
       .then((data) => {
         return res.json(data);
       })
@@ -110,6 +132,28 @@ export const itemController = {
         return res.json({
           status: 200,
           message: 'Item is sold.',
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        next(err);
+        return;
+      });
+  },
+
+  async deleteItemById(
+    req: Request,
+    res: Response<ISuccessViewModel>,
+    next: NextFunction
+  ) {
+    const { id } = <{ id: string }>req.params;
+
+    await itemService
+      .deleteItemById(id)
+      .then(() => {
+        return res.json({
+          status: 202,
+          message: 'OK',
         });
       })
       .catch((err) => {
