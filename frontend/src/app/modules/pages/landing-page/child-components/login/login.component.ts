@@ -31,7 +31,7 @@ export class LoginComponent {
   onSubmit(): void {
     const loginForm: ILoginForm = this.loginForm.value;
     this.authService.login(loginForm).subscribe(
-      (messageFromServer: ILoginApiData) => {
+      () => {
         this.walletService.getDollarsByUser();
       },
       (err: HttpErrorResponse) => {
