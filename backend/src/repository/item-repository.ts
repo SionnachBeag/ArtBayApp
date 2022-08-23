@@ -4,6 +4,7 @@ import { IDBResultDomainModel } from '../models/domain-models/IDBResultDomainMod
 import { IItemByIdDomainModel } from '../models/domain-models/IItemByIdDomainModel';
 import { IItemDomainModel } from '../models/domain-models/IItemDomainModel';
 import { ICreateItemRequestModel } from '../models/request-models/ICreateItemRequestModel';
+import { IUpdateItemRequestModel } from '../models/request-models/IUpdateItemRequestModel';
 
 export const itemRepository = {
   async addItem(newItem: ICreateItemRequestModel): Promise<number> {
@@ -83,5 +84,20 @@ export const itemRepository = {
       [id]
     );
     return deletedItem.affectedRows;
+  },
+
+  async updateItem(id: string, item: IUpdateItemRequestModel): Promise<number> {
+    const updatedItem = await db.query<IDBResultDomainModel>(
+      'UPDATE items SET title = ?,description = ?,imgUrl = ?,price = ?, sellerId = ? WHERE id = ?',
+      [
+        item.title,
+        item.description,
+        item.imgUrl,
+        `${item.price}`,
+        `${item.sellerId}`,
+        id,
+      ]
+    );
+    return updatedItem.affectedRows;
   },
 };
