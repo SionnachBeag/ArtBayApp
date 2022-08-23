@@ -6,7 +6,6 @@ import { IRegisterRequestModel } from '../models/request-models/IRegisterRequest
 import { IDollarsByUserViewModel } from '../models/view-models/IDollarsByUserViewModel';
 import { ILoginViewModel } from '../models/view-models/ILoginViewModel';
 import { ISuccessViewModel } from '../models/view-models/ISuccessViewModel';
-
 import { emailService } from '../services/email-service';
 import { jwtService } from '../services/JWT-service';
 import { passwordService } from '../services/password-service';
