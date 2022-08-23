@@ -1,3 +1,5 @@
+@import "../../../../styles/variables.scss";
+
 .container {
   display: flex;
   flex-direction: column;
@@ -5,26 +7,26 @@
   align-items: center;
   padding: 100px;
   margin-top: 50px;
-}
 
-.auth-container {
-  width: 500px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 40px;
-  border: 1px solid black;
-  border-radius: 8px;
-  background-color: white;
-  margin: 50px;
-}
+  .auth-container {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    border: 1px solid $black-color;
+    border-radius: $border-radius;
+    background-color: $white-color;
+    margin: 50px;
 
-.mat-tab-label {
-  font-size: 24px;
-  margin-right: 30px;
-}
+    .mat-tab-label {
+      font-size: 24px;
+      margin-right: 30px;
+    }
 
-.mat-tab-label.mat-tab-label-active {
-  font-size: 24px !important;
+    .mat-tab-label.mat-tab-label-active {
+      font-size: 24px !important;
+    }
+  }
 }
