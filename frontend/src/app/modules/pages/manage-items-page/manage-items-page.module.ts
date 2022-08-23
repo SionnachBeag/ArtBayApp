@@ -7,9 +7,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { ManageItemComponent } from './child-components/manage-item/manage-item.component';
+import { EditPopupComponent } from './child-components/edit-popup/edit-popup.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [ManageItemsPageComponent, ManageItemComponent],
+  declarations: [
+    ManageItemsPageComponent,
+    ManageItemComponent,
+    EditPopupComponent,
+  ],
   imports: [
     CommonModule,
     ManageItemsPageRoutingModule,
@@ -17,6 +23,7 @@ import { ManageItemComponent } from './child-components/manage-item/manage-item.
     ReactiveFormsModule,
     MatButtonModule,
     MatInputModule,
+    MatDialogModule,
   ],
 })
 export class ManageItemsPageModule {}
