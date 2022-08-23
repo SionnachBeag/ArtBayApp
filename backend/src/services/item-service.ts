@@ -52,7 +52,7 @@ export const itemService = {
     const itemData: IItemByIdDomainModel = await itemRepository.getItemById(id);
     if (itemData.price > buyerMoney) {
       return Promise.reject({
-        message: `not enough money to buy this item`,
+        message: `there's not enough money to buy this item`,
         status: 400,
       });
     }
