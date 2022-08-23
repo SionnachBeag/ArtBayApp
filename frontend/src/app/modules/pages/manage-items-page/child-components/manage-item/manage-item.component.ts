@@ -1,22 +1,26 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input } from '@angular/core';
 import { IItemsOnSaleViewModel } from 'src/app/core/models/IItemsOnSaleViewModel';
 import { ItemService } from 'src/app/core/services/item-service/item.service';
+import { EditPopupComponent } from '../edit-popup/edit-popup.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-manage-item',
   templateUrl: './manage-item.component.html',
   styleUrls: ['./manage-item.component.scss'],
 })
-export class ManageItemComponent implements OnInit {
+export class ManageItemComponent {
   @Input() itemData!: IItemsOnSaleViewModel;
-  constructor(private itemService: ItemService, private router: Router) {}
+  constructor(private itemService: ItemService, public dialog: MatDialog) {}
 
-  onDelete() {
+  onDelete(): void {
     this.itemService.deleteItemById(this.itemData.id);
   }
 
-  onEdit() {}
-
-  ngOnInit(): void {}
+  onEdit(): void {
+    this.dialog.open(EditPopupComponent, {
+      panelClass: 'custom-dialog-container',
+      data: { pageValue: this.itemData },
+    });
+  }
 }
