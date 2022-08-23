@@ -19,6 +19,10 @@ export const itemService = {
     return await itemRepository.listItemsBought(id);
   },
 
+  async listItemsByUser(id: string): Promise<IItemDomainModel[]> {
+    return await itemRepository.listItemsByUser(id);
+  },
+
   async getItemById(
     id: string
   ): Promise<IItemByIdDomainModel | IItemAndBuyerModel> {
@@ -65,5 +69,17 @@ export const itemService = {
         status: 404,
       });
     }
+  },
+
+  async deleteItemById(id: string): Promise<number | undefined> {
+    return await itemRepository.deleteItemById(id).then((numOfItems) => {
+      if (numOfItems === 0) {
+        return Promise.reject({
+          message: 'This ID does not exist',
+          status: 404,
+        });
+      }
+      return numOfItems;
+    });
   },
 };
