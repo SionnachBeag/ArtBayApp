@@ -1,11 +1,13 @@
+@import "../../../../../../styles/variables.scss";
+
 .item-card-container {
   display: flex;
   flex-direction: row;
   margin: 10px;
-  border: 1px solid black;
+  border: 1px solid $black-color;
   width: 500px;
-  background-color: rgb(229, 201, 229);
-  border-radius: 8px;
+  background-color: $light-lilac-color;
+  border-radius: $border-radius;
   box-shadow: 3px 2px 3px;
 
   .img-container {
@@ -16,7 +18,7 @@
 
     .item-img {
       height: 100%;
-      border-radius: 8px;
+      border-radius: $border-radius;
       position: relative;
     }
 
@@ -24,7 +26,7 @@
       padding: 3px;
       font-size: 1.5rem;
       font-weight: 600;
-      color: black;
+      color: $black-color;
       margin: auto;
       text-align: end;
       line-height: 1.5rem;
@@ -42,8 +44,8 @@
     }
 
     .btn {
-      background-color: rgb(254, 246, 230);
-      border: 1px solid black;
+      background-color: $cream-color;
+      border: 1px solid $black-color;
       margin-top: 10px;
       font-weight: 700;
       width: 100px;
