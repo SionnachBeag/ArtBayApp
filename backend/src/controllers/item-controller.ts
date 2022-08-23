@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import { ApiErrorModel } from '../models/ApiErrorModel';
 import { IBuyItemRequestModel } from '../models/request-models/IBuyItemRequestModel';
 import { ICreateItemRequestModel } from '../models/request-models/ICreateItemRequestModel';
+import { IUpdateItemRequestModel } from '../models/request-models/IUpdateItemRequestModel';
 import { ICreateItemViewModel } from '../models/view-models/ICreateItemViewModel';
 import { IItemByIdViewModel } from '../models/view-models/IItemByIdViewModel';
 import { IItemsOnSaleViewModel } from '../models/view-models/IItemsOnSaleViewModel';
@@ -132,6 +133,29 @@ export const itemController = {
         return res.json({
           status: 200,
           message: 'Item is sold.',
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        next(err);
+        return;
+      });
+  },
+
+  async updateItem(
+    req: Request,
+    res: Response<ISuccessViewModel>,
+    next: NextFunction
+  ) {
+    const { id } = <{ id: string }>req.params;
+    const item: IUpdateItemRequestModel = req.body;
+
+    await itemService
+      .updateItem(id, item)
+      .then(() => {
+        return res.json({
+          status: 200,
+          message: 'Item is updated.',
         });
       })
       .catch((err) => {
