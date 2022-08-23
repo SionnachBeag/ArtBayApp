@@ -1,13 +1,18 @@
+@import "../styles/variables.scss";
+
 #page-container {
   position: relative;
   min-height: 100vh;
-  max-width: 1890px;
-  margin: auto;
-  padding: auto;
-  background-color: rgb(254, 246, 230);
+  background-color: $cream-color;
 
   #content-wrap {
     padding-bottom: 2.5rem;
+
+    #main {
+      max-width: 1890px;
+      margin: auto;
+      padding: auto;
+    }
   }
 
   #footer {
