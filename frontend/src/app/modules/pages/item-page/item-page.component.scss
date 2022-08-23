@@ -1,3 +1,5 @@
+@import "../../../../styles/variables.scss";
+
 .item-data-container {
   display: flex;
   flex-wrap: wrap;
@@ -9,44 +11,34 @@
   margin-top: 30px;
 }
 
-.title {
-  font-size: 30px;
-  font-weight: 800;
-}
-
-.description {
-  font-size: 22px;
-  font-style: italic;
-}
-
-.price {
-  font-size: 28px;
-  font-weight: 800;
-}
-
-.seller,
-.buyer {
-  font-size: 24px;
-}
-
 .details {
   display: flex;
   align-items: center;
   flex-direction: column;
-  border: 1px solid black;
+  border: 1px solid $black-color;
   padding: 40px;
   margin: 100px;
-  background-color: white;
-}
+  background-color: $white-color;
 
-img {
-  border: solid 2px;
-  border-bottom-color: #ffe;
-  border-left-color: #eed;
-  border-right-color: #eed;
-  border-top-color: #ccb;
-  max-height: 100%;
-  max-width: 100%;
+  .title {
+    font-size: 30px;
+    font-weight: 800;
+  }
+
+  .description {
+    font-size: 22px;
+    font-style: italic;
+  }
+
+  .price {
+    font-size: 28px;
+    font-weight: 800;
+  }
+
+  .seller,
+  .buyer {
+    font-size: 24px;
+  }
 }
 
 .frame {
@@ -87,5 +79,15 @@ img {
     position: absolute;
     right: -2.5vmin;
     top: -2.5vmin;
+  }
+
+  img {
+    border: solid 2px;
+    border-bottom-color: #ffe;
+    border-left-color: #eed;
+    border-right-color: #eed;
+    border-top-color: #ccb;
+    max-height: 100%;
+    max-width: 100%;
   }
 }
