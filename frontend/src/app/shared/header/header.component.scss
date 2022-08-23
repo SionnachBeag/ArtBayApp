@@ -1,3 +1,5 @@
+@import "../../../styles/variables.scss";
+
 .header-container {
   display: flex;
   position: fixed;
@@ -13,10 +15,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-radius: 8px;
-    box-shadow: 0px 0px 50px rgb(229, 201, 229);
+    border-radius: $border-radius;
+    box-shadow: 0px 0px 50px $light-lilac-color;
     opacity: 90%;
-    background-color: white;
+    background-color: $white-color;
     margin: auto;
 
     #reg-log-container {
@@ -25,7 +27,7 @@
 
       .dollars {
         margin-right: 16px;
-        color: #673ab7;
+        color: $dark-lilac-color;
         text-decoration: none;
         font-size: 1.1rem;
         font-weight: 700;
@@ -34,16 +36,16 @@
       }
 
       .button {
-        background-color: rgb(229, 201, 229);
+        background-color: $light-lilac-color;
         margin-right: 16px;
-        color: black;
+        color: $black-color;
         width: 100px;
         letter-spacing: 0.1rem;
       }
 
       .button:hover {
-        background-color: #673ab7;
-        color: rgb(254, 246, 230);
+        background-color: $dark-lilac-color;
+        color: $cream-color;
       }
 
       .manage-button {
@@ -62,7 +64,7 @@
     }
 
     a {
-      color: #673ab7;
+      color: $dark-lilac-color;
       text-decoration: none;
       font-size: 1.1rem;
       font-weight: 700;
@@ -73,7 +75,7 @@
     }
 
     a:hover {
-      color: rgb(229, 201, 229);
+      color: $light-lilac-color;
     }
   }
 }
