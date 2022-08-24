@@ -6,5 +6,6 @@ export interface IItemAndBuyerModel {
   price: number;
   isSold: boolean;
   userName: string;
+  userId: number;
   buyerName: string;
 }
