@@ -39,8 +39,12 @@ export class EditPopupComponent implements OnInit {
         ...input,
         sellerId: sellerId,
       };
-      this.itemService.updateItem(this.itemData.id, formattedForm);
-      this.dialog.closeAll();
+      if (this.editItemForm.valid) {
+        this.itemService.updateItem(this.itemData.id, formattedForm);
+        this.dialog.closeAll();
+      } else {
+        this.message = 'Invalid form!';
+      }
     }
   }
 
