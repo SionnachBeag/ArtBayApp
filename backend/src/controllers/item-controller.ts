@@ -150,6 +150,19 @@ export const itemController = {
     const { id } = <{ id: string }>req.params;
     const item: IUpdateItemRequestModel = req.body;
 
+    if (item.price < 0 || item.price % 1 !== 0)
+      return next({
+        message: 'Incorrect price value.',
+        status: 400,
+      });
+
+    const isValid = imgUrlService.imgUrlCheck(item.imgUrl);
+    if (!isValid)
+      return next({
+        message: 'Incorrect image url.',
+        status: 400,
+      });
+
     await itemService
       .updateItem(id, item)
       .then(() => {
