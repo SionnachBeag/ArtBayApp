@@ -6,5 +6,6 @@ export interface IItemByIdViewModel {
   price: number;
   isSold: boolean;
   userName: string;
+  userId: number;
   buyerName?: string;
 }
