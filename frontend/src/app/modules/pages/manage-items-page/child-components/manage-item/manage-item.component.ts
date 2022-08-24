@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { IItemsOnSaleViewModel } from 'src/app/core/models/IItemsOnSaleViewModel';
-import { ItemService } from 'src/app/core/services/item-service/item.service';
 import { EditPopupComponent } from '../edit-popup/edit-popup.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ConfirmationPopupComponent } from 'src/app/shared/confirmation-popup/confirmation-popup.component';
@@ -12,7 +11,7 @@ import { ConfirmationPopupComponent } from 'src/app/shared/confirmation-popup/co
 })
 export class ManageItemComponent {
   @Input() itemData!: IItemsOnSaleViewModel;
-  constructor(private itemService: ItemService, public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog) {}
 
   openDeleteModal(): void {
     const dialogConfig = new MatDialogConfig();
