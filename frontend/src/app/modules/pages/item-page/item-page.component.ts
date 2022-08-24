@@ -26,6 +26,26 @@ export class ItemPageComponent implements OnInit {
       : null;
   }
 
+  get Title(): string | null {
+    return this.item && this.item.title ? this.item.title : null;
+  }
+
+  get Description(): string | null {
+    return this.item && this.item.description ? this.item.description : null;
+  }
+
+  get Price(): number | null {
+    return this.item && this.item.price ? this.item.price : null;
+  }
+
+  get UserName(): string | null {
+    return this.item && this.item.userName ? this.item.userName : null;
+  }
+
+  get BuyerName(): string | null {
+    return this.item && this.item.buyerName ? this.item.buyerName : null;
+  }
+
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       try {
@@ -39,6 +59,9 @@ export class ItemPageComponent implements OnInit {
     this.itemService
       .getItemById(this.id)
       .subscribe((response: IItemByIdViewModel) => {
+        if (!response) {
+          this.router.navigateByUrl('/pageNotFound');
+        }
         this.item = response;
       });
   }
