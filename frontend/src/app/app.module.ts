@@ -6,6 +6,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { TokenInterceptor } from './core/interceptors/token-interceptor/token.interceptor';
+import { ErrorHandlerInterceptor } from './core/interceptors/error-handler-interceptor/error-handler.interceptor';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,11 +17,17 @@ import { TokenInterceptor } from './core/interceptors/token-interceptor/token.in
     NoopAnimationsModule,
     HttpClientModule,
     SharedModule,
+    MatSnackBarModule,
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorHandlerInterceptor,
       multi: true,
     },
   ],
