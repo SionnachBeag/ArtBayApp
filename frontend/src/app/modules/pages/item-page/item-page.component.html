@@ -3,10 +3,10 @@
     <img src="{{ ImgUrl }}" />
   </div>
   <div class="details">
-    <div class="title">{{ item.title }}</div>
-    <div class="description">{{ item.description }}</div>
-    <div class="price">{{ item.price }} ART$</div>
-    <div class="seller">Seller: {{ item.userName }}</div>
-    <div class="buyer" *ngIf="item.buyerName">Buyer: {{ item.buyerName }}</div>
+    <div class="title">{{ Title }}</div>
+    <div class="description">{{ Description }}</div>
+    <div class="price">{{ Price }} ART$</div>
+    <div class="seller">Seller: {{ UserName }}</div>
+    <div class="buyer" *ngIf="BuyerName">Buyer: {{ BuyerName }}</div>
   </div>
 </div>
