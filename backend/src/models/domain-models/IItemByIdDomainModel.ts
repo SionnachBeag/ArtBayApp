@@ -6,4 +6,5 @@ export interface IItemByIdDomainModel {
   price: number;
   isSold: boolean;
   userName: string;
+  userId: number;
 }
