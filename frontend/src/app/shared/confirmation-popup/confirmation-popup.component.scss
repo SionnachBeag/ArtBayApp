@@ -1,0 +1,12 @@
+@import "../../../styles/variables.scss";
+
+.dialog-container {
+  padding: 50px;
+  background-color: $light-lilac-color;
+  border-radius: $border-radius;
+
+  .actions {
+    display: flex;
+    justify-content: space-evenly;
+  }
+}
