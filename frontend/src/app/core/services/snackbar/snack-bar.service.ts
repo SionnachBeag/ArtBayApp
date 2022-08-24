@@ -12,7 +12,6 @@ export class SnackBarService {
       duration: 10000,
       verticalPosition: 'bottom',
       horizontalPosition: 'center',
-      panelClass: 'red-snackbar',
     });
   }
 
@@ -21,7 +20,6 @@ export class SnackBarService {
       duration: 10000,
       verticalPosition: 'bottom',
       horizontalPosition: 'center',
-      panelClass: 'yellow-snackbar',
     });
   }
 }
