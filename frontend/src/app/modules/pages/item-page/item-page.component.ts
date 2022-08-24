@@ -59,9 +59,6 @@ export class ItemPageComponent implements OnInit {
     this.itemService
       .getItemById(this.id)
       .subscribe((response: IItemByIdViewModel) => {
-        if (!response) {
-          this.router.navigateByUrl('/pageNotFound');
-        }
         this.item = response;
       });
   }
