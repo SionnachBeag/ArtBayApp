@@ -11,6 +11,7 @@ import { WalletService } from 'src/app/core/services/wallet-service/wallet.servi
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
+  errorMessage: string = '';
   result: string = '';
   hide: boolean = true;
   constructor(
@@ -29,6 +30,7 @@ export class LoginComponent {
 
   onSubmit(): void {
     const loginForm: ILoginForm = this.loginForm.value;
+
     this.authService.login(loginForm).subscribe(
       () => {
         this.walletService.getDollarsByUser();
