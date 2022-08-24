@@ -56,7 +56,7 @@ export const itemRepository = {
 
   async getItemById(id: string): Promise<IItemByIdDomainModel> {
     const requestedItem = await db.query<IItemByIdDomainModel[]>(
-      'SELECT items.id, items.title, items.description, items.imgUrl, items.price, items.isSold, users.userName FROM items JOIN users ON users.id = items.sellerId WHERE items.id = ?',
+      'SELECT items.id, items.title, items.description, items.imgUrl, items.price, items.isSold, users.userName, users.id as userId FROM items JOIN users ON users.id = items.sellerId WHERE items.id = ?',
       [`${id}`]
     );
     return requestedItem[0];
