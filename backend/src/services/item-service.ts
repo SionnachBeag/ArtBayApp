@@ -55,12 +55,21 @@ export const itemService = {
   async buyItem(id: string, buyerId: string): Promise<number> {
     const buyerMoney: number = await userRepository.getDollarsByUser(buyerId);
     const itemData: IItemByIdDomainModel = await itemRepository.getItemById(id);
-    if (itemData.price > buyerMoney) {
+
+    if (itemData.userId === parseInt(buyerId)) {
       return Promise.reject({
-        message: `there's not enough money to buy this item`,
+        message: `you own this item`,
         status: 400,
       });
     }
+
+    if (itemData.price > buyerMoney) {
+      return Promise.reject({
+        message: `you don't have enough art dollars to buy this item`,
+        status: 400,
+      });
+    }
+
     const amountOfSoldItem: number = await itemRepository.buyItem(id, buyerId);
     if (amountOfSoldItem > 0) {
       return await itemRepository.takeMoney(buyerId, itemData.price);
