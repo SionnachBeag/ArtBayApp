@@ -39,8 +39,12 @@ export class ManageItemsPageComponent implements OnInit {
         ...input,
         sellerId: sellerId,
       };
-      this.itemService.addItem(formattedForm);
-      this.router.navigate(['/shop']);
+      if (this.itemForm.valid) {
+        this.itemService.addItem(formattedForm);
+        this.router.navigate(['/shop']);
+      } else {
+        this.message = 'Invalid form';
+      }
     }
   }
 
