@@ -15,7 +15,7 @@ export const userService = {
     if (userDataByUserName) {
       return Promise.reject({
         message: 'Username already taken',
-        status: 307,
+        status: 422,
       });
     }
     const userDataByEmail: IUserDomainModel =
@@ -23,7 +23,7 @@ export const userService = {
     if (userDataByEmail) {
       return Promise.reject({
         message: 'Email already taken',
-        status: 307,
+        status: 422,
       });
     }
     newUser.password = passwordService.generateHash(newUser.password);
@@ -36,7 +36,7 @@ export const userService = {
     if (!userDataByUserName) {
       return Promise.reject({
         message: 'Username or password is incorrect.',
-        status: 307,
+        status: 422,
       });
     }
     const passwordIsTheSame: boolean = passwordService.comparePasswords(
@@ -46,7 +46,7 @@ export const userService = {
     if (!passwordIsTheSame) {
       return Promise.reject({
         message: 'Username or password is incorrect',
-        status: 307,
+        status: 422,
       });
     }
     return userDataByUserName;
