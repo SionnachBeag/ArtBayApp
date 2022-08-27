@@ -24,9 +24,7 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
         if (error.status === 400) {
           this.snackBarService.showInfoMessage(error.error.message);
         } else if (error.status > 400) {
-          this.snackBarService.showErrorMessage(error.message);
-        } else if (error.status === 307) {
-          return throwError(() => error);
+          this.snackBarService.showErrorMessage(error.error.message);
         }
         return throwError(() => errorMsg);
       })
