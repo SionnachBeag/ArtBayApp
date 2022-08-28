@@ -66,10 +66,6 @@ export class AuthService {
     );
   }
 
-  clearLocalStorage(): void {
-    localStorage.clear();
-  }
-
   logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
@@ -81,12 +77,6 @@ export class AuthService {
     if (!this.getToken() || !this.getUserName()) {
       this.logout();
     }
-  }
-
-  monitorLocalStorageChanges(): void {
-    window.addEventListener('storage', () => {
-      this.logout();
-    });
   }
 
   isTokenValid(): boolean {
