@@ -37,7 +37,7 @@ export class EditPopupComponent implements OnInit {
       const input: IItemFormInput = this.editItemForm.value;
       const formattedForm: IUpdateItem = {
         ...input,
-        sellerId: sellerId,
+        userId: sellerId,
       };
       if (this.editItemForm.valid) {
         this.itemService.updateItem(this.itemData.id, formattedForm);
