@@ -6,5 +6,5 @@ export interface IItemsOnSaleViewModel {
   price: number;
   buyerId?: number;
   isSold: boolean;
-  sellerId: number;
+  userId: number;
 }

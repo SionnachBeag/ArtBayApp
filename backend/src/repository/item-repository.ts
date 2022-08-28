@@ -15,7 +15,7 @@ export const itemRepository = {
         newItem.description,
         newItem.imgUrl,
         `${newItem.price}`,
-        `${newItem.sellerId}`,
+        `${newItem.userId}`,
       ]
     );
     return repoResponse.insertId;
@@ -94,7 +94,7 @@ export const itemRepository = {
         item.description,
         item.imgUrl,
         `${item.price}`,
-        `${item.sellerId}`,
+        `${item.userId}`,
         id,
       ]
     );
