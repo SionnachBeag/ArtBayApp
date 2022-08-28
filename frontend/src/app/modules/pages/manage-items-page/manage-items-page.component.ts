@@ -37,7 +37,7 @@ export class ManageItemsPageComponent implements OnInit {
       const input: IItemFormInput = this.itemForm.value;
       const formattedForm: ICreateItem = {
         ...input,
-        sellerId: sellerId,
+        userId: sellerId,
       };
       if (this.itemForm.valid) {
         this.itemService.addItem(formattedForm);
