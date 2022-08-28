@@ -3,5 +3,5 @@ export interface IUpdateItem {
   description: string;
   imgUrl: string;
   price: number;
-  sellerId: number;
+  userId: number;
 }
