@@ -49,7 +49,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.getArtDollarAmount();
     this.authService.checkLocalStorageData();
-    this.authService.monitorLocalStorageChanges();
     if (this.authService.isLoggedIn()) {
       this.authService.isTokenValid();
     }
