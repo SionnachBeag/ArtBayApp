@@ -8,6 +8,7 @@ import {
   loginRequestKeys,
   idParamKey,
   buyItemRequestKey,
+  updateItemRequestKeys,
 } from '../helpers/request-keys';
 import { itemController } from '../controllers/item-controller';
 import tokenAuthentication from '../middlewares/token-authentication';
@@ -66,7 +67,7 @@ apiRouter
   .route('/items/:id')
   .put(
     requestParamValidator(idParamKey, 400),
-    requestBodyValidator(addItemRequestKeys, 400),
+    requestBodyValidator(updateItemRequestKeys, 400),
     tokenAuthentication()
   );
 apiRouter.put('/items/:id', itemController.updateItem);
