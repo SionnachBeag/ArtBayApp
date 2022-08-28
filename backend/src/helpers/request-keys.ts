@@ -7,9 +7,17 @@ export const addItemRequestKeys: string[] = [
   'description',
   'imgUrl',
   'price',
-  'sellerId',
+  'userId',
 ];
 
 export const buyItemRequestKey: string[] = ['buyerId'];
 
 export const idParamKey: string[] = ['id'];
+
+export const updateItemRequestKeys: string[] = [
+  'title',
+  'description',
+  'imgUrl',
+  'price',
+  'userId',
+];
