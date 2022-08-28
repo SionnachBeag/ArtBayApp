@@ -24,13 +24,4 @@ export const jwtService = {
       return false;
     }
   },
-
-  getUserIdFromToken(token: string): number {
-    token = token.split(' ')[1];
-    const jwtPayload = jwt.verify(
-      token,
-      `${process.env.SECRET_KEY}`
-    ) as jwt.JwtPayload;
-    return jwtPayload.userId;
-  },
 };
