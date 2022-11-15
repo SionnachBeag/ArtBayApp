@@ -31,15 +31,15 @@ export class LoginComponent {
   onSubmit(): void {
     const loginForm: ILoginForm = this.loginForm.value;
 
-    this.authService.login(loginForm).subscribe(
-      () => {
+    this.authService.login(loginForm).subscribe({
+      next: () => {
         this.walletService.getDollarsByUser();
       },
-      (err: HttpErrorResponse) => {
+      error: (err: HttpErrorResponse) => {
         if (err.status === 307) {
           this.result = `${err.error.message}`;
         }
-      }
-    );
+      },
+    });
   }
 }
