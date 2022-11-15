@@ -78,8 +78,8 @@ export class RegisterComponent {
       password: registerForm.password,
     };
     if (this.registerForm.valid) {
-      this.authService.register(finalRegisterForm).subscribe(
-        (messageFromServer: IApiResponseMessageModel) => {
+      this.authService.register(finalRegisterForm).subscribe({
+        next: (messageFromServer: IApiResponseMessageModel) => {
           if (messageFromServer.status === 201) {
             this.result = `${messageFromServer.message}`;
             setTimeout(() => {
@@ -88,12 +88,12 @@ export class RegisterComponent {
             }, 1000);
           }
         },
-        (err: HttpErrorResponse) => {
+        error: (err: HttpErrorResponse) => {
           if (err.status === 307) {
             this.result = `${err.error.message}`;
           }
-        }
-      );
+        },
+      });
     } else {
       this.errorMessage = 'Invalid form!';
     }
