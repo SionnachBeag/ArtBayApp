@@ -4,13 +4,10 @@
       class="item-img"
       style="background: url('http://localhost:3000/{{ itemData.imgUrl }}');
     background-size: cover;"
-    >
-      <div class="water-mark">@</div>
-    </div>
+    ></div>
   </div>
   <div class="item-detail-container">
     <div class="title">{{ itemData.title }}</div>
-    <div class="description">{{ itemData.description }}</div>
     <div class="price">{{ itemData.price }} ART$</div>
     <a class="view" routerLink="/viewItem" [queryParams]="{ id: itemData?.id }"
       >View Item</a
@@ -21,7 +18,7 @@
       mat-flat-button
       (click)="onClick()"
     >
-      BUY
+      Buy
     </button>
   </div>
 </div>
