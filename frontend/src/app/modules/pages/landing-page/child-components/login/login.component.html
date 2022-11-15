@@ -1,10 +1,10 @@
 <form
   [formGroup]="loginForm"
   #form="ngForm"
-  class="loginForm"
+  class="login-form"
   (ngSubmit)="onSubmit()"
 >
-  <mat-form-field class="field">
+  <mat-form-field class="login-form-field">
     <span matPrefix><mat-icon class="icon user">person</mat-icon> </span>
     <input
       matInput
@@ -14,7 +14,7 @@
       placeholder="Username"
     />
   </mat-form-field>
-  <mat-form-field class="field">
+  <mat-form-field class="login-form-field">
     <span matPrefix><mat-icon class="icon lock">lock</mat-icon> </span>
     <input
       matInput
