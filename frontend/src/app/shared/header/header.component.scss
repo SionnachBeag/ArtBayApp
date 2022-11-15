@@ -30,9 +30,12 @@
         color: $dark-lilac-color;
         text-decoration: none;
         font-size: 1.1rem;
-        font-weight: 700;
         letter-spacing: 0.1rem;
         margin-top: 7px;
+        font-weight: 700;
+        font-family: "Tangerine", serif;
+        font-size: 1.8rem;
+        text-shadow: 4px 4px 4px #aaa;
       }
 
       .button {
@@ -40,12 +43,14 @@
         margin-right: 16px;
         color: $black-color;
         width: 100px;
-        letter-spacing: 0.1rem;
+        font-family: Montserrat, sans-serif;
+        font-weight: 400;
+        font-size: 16px;
       }
 
       .button:hover {
         background-color: $dark-lilac-color;
-        color: $cream-color;
+        color: $white-color;
       }
 
       .manage-button {
@@ -66,8 +71,10 @@
     a {
       color: $dark-lilac-color;
       text-decoration: none;
-      font-size: 1.1rem;
+      font-size: 1.8rem;
+      text-shadow: 4px 4px 4px #aaa;
       font-weight: 700;
+      font-family: "Tangerine", serif;
       letter-spacing: 0.1rem;
       text-decoration: underline;
       margin: 0px 20px;
