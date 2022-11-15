@@ -5,7 +5,15 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin: 130px 0px;
+  margin: 60px;
+  padding: 100px;
+
+  p {
+    margin: 10px 0px;
+    font-size: 24px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+  }
 
   .form-container {
     display: flex;
@@ -16,35 +24,34 @@
     height: 100%;
 
     form {
-      border: 1px solid $black-color;
+      box-shadow: 0px 0px 50px $light-lilac-color;
       border-radius: $border-radius;
       display: flex;
       flex-direction: column;
       align-items: center;
       margin: 40px;
-      padding: 20px;
+      padding: 30px;
       background-color: $white-color;
       width: 500px;
-      height: 600px;
-
-      p {
-        margin: 30px 0px;
-        font-size: 24px;
-        font-family: Roboto, Arial, Helvetica, sans-serif;
-        font-weight: 500;
-      }
+      height: 550px;
 
       .field {
         margin-top: 20px;
         width: 70%;
+        font-family: Montserrat, sans-serif;
       }
 
       .add-item-button {
         font-size: 18px;
         font-weight: 700;
         margin-top: 30px;
-        border: 1px solid $black-color;
         background-color: $light-lilac-color;
+        font-family: Montserrat, sans-serif;
+      }
+
+      .add-item-button:hover {
+        background-color: $dark-lilac-color;
+        color: $white-color;
       }
 
       .message {
@@ -56,10 +63,11 @@
   }
 
   .manage-container {
+    margin-top: 50px;
     .h1-title {
-      margin: 30px 0px;
+      margin: 10px 0px;
       font-size: 24px;
-      font-family: Roboto, Arial, Helvetica, sans-serif;
+      font-family: Montserrat, sans-serif;
       font-weight: 500;
       text-align: center;
     }
