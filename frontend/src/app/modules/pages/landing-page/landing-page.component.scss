@@ -15,14 +15,15 @@
     justify-content: center;
     align-items: center;
     padding: 40px;
-    border: 1px solid $black-color;
+    box-shadow: 0px 0px 50px $light-lilac-color;
     border-radius: $border-radius;
     background-color: $white-color;
     margin: 50px;
 
     .mat-tab-label {
       font-size: 24px;
-      margin-right: 30px;
+      margin-right: 25px;
+      margin-left: 25px;
     }
 
     .mat-tab-label.mat-tab-label-active {
