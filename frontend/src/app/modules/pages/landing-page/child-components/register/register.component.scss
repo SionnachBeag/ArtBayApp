@@ -20,8 +20,12 @@
     font-size: 18px;
     font-weight: 700;
     margin-top: 30px;
-    border: 1px solid $black-color;
     background-color: $light-lilac-color;
+  }
+
+  .register-button:hover {
+    background-color: $dark-lilac-color;
+    color: $white-color;
   }
 
   .errorMessage {
