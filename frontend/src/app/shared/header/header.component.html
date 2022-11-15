@@ -9,7 +9,7 @@
 
     <div id="reg-log-container">
       <div *ngIf="router.url !== '/'" class="dollars">
-        My Art$: {{ artDollars }}
+        My Art Dollars: {{ artDollars }}
       </div>
       <button
         *ngIf="authService.getUserName()"
@@ -17,7 +17,7 @@
         class="logout-button button"
         (click)="logout()"
       >
-        Logout
+        Log out
       </button>
     </div>
   </div>
