@@ -11,7 +11,6 @@
   border-radius: $border-radius;
 
   form {
-    border: 1px solid $black-color;
     border-radius: $border-radius;
     display: flex;
     flex-direction: column;
@@ -25,21 +24,27 @@
     p {
       margin: 30px 0px;
       font-size: 24px;
-      font-family: Roboto, Arial, Helvetica, sans-serif;
+      font-family: Montserrat, sans-serif;
       font-weight: 500;
     }
 
     .field {
       margin-top: 20px;
       width: 70%;
+      font-family: Montserrat, sans-serif;
     }
 
     .add-item-button {
       font-size: 18px;
       font-weight: 700;
       margin-top: 30px;
-      border: 1px solid $black-color;
       background-color: $light-lilac-color;
+      font-family: Montserrat, sans-serif;
+    }
+
+    .add-item-button:hover {
+      background-color: $dark-lilac-color;
+      color: $white-color;
     }
 
     .message {
