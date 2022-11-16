@@ -7,6 +7,8 @@ import { HeaderComponent } from './header/header.component';
 import { ItemComponent } from './item/item.component';
 import { ConfirmationPopupComponent } from './confirmation-popup/confirmation-popup.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ImageUploadComponent } from './image-upload/image-upload.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -14,8 +16,20 @@ import { MatDialogModule } from '@angular/material/dialog';
     HeaderComponent,
     FooterComponent,
     ConfirmationPopupComponent,
+    ImageUploadComponent,
   ],
-  imports: [CommonModule, MatButtonModule, RouterModule, MatDialogModule],
-  exports: [ItemComponent, HeaderComponent, FooterComponent],
+  imports: [
+    CommonModule,
+    MatButtonModule,
+    RouterModule,
+    MatDialogModule,
+    MatIconModule,
+  ],
+  exports: [
+    ItemComponent,
+    HeaderComponent,
+    FooterComponent,
+    ImageUploadComponent,
+  ],
 })
 export class SharedModule {}
