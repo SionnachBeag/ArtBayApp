@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ManageItemComponent } from './child-components/manage-item/manage-item.component';
 import { EditPopupComponent } from './child-components/edit-popup/edit-popup.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatButtonModule,
     MatInputModule,
     MatDialogModule,
+    SharedModule,
   ],
 })
 export class ManageItemsPageModule {}
