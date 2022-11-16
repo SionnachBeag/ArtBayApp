@@ -31,6 +31,14 @@ export class EditPopupComponent implements OnInit {
     this.itemData = data.pageValue;
   }
 
+  addPath(filePath: string): void {
+    if (filePath) {
+      this.editItemForm.patchValue({
+        imgUrl: filePath,
+      });
+    }
+  }
+
   onSubmit(): void {
     if (typeof this.authService.getUserIdFromToken() === 'number') {
       const sellerId: number = this.authService.getUserIdFromToken();
