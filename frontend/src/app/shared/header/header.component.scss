@@ -27,15 +27,13 @@
 
       .dollars {
         margin-right: 16px;
-        color: $dark-lilac-color;
+        color: rgb(50, 50, 50);
         text-decoration: none;
-        font-size: 1.1rem;
         letter-spacing: 0.1rem;
         margin-top: 7px;
-        font-weight: 700;
-        font-family: "Tangerine", serif;
-        font-size: 1.8rem;
-        text-shadow: 4px 4px 4px #aaa;
+        font-weight: 600;
+        font-family: "Dancing Script", cursive;
+        font-size: 1.5rem;
       }
 
       .button {
@@ -67,14 +65,13 @@
       }
 
       a {
-        color: $dark-lilac-color;
+        color: rgb(50, 50, 50);
         text-decoration: none;
-        font-size: 1.8rem;
-        text-shadow: 4px 4px 4px #aaa;
-        font-weight: 700;
-        font-family: "Tangerine", serif;
-        letter-spacing: 0.1rem;
         text-decoration: underline;
+        font-size: 1.5rem;
+        font-weight: 600;
+        font-family: "Dancing Script", cursive;
+        letter-spacing: 0.1rem;
         margin: 0px 15px;
         cursor: pointer;
       }
