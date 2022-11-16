@@ -26,6 +26,10 @@
         placeholder="image url"
       />
     </mat-form-field>
+    <app-image-upload
+      class="image-upload"
+      (filePath)="addPath($event)"
+    ></app-image-upload>
     <mat-form-field class="field">
       <input matInput formControlName="price" id="price" placeholder="price" />
     </mat-form-field>
