@@ -13,10 +13,13 @@ import {
 import { itemController } from '../controllers/item-controller';
 import tokenAuthentication from '../middlewares/token-authentication';
 import requestParamValidator from '../middlewares/request-param-validator';
+import fileUpload from 'express-fileupload';
+import { imageUploadController } from '../controllers/image-upload-controller';
 
 const apiRouter = express.Router();
 apiRouter.use(cors());
 apiRouter.use(express.json());
+apiRouter.use(fileUpload());
 
 apiRouter
   .route('/register')
@@ -76,5 +79,7 @@ apiRouter
   .route('/items/:id')
   .delete(requestParamValidator(idParamKey, 400), tokenAuthentication());
 apiRouter.delete('/items/:id', itemController.deleteItemById);
+
+apiRouter.post('/upload', imageUploadController.uploadImage);
 
 export default apiRouter;
