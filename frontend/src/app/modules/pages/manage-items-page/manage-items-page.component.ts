@@ -31,6 +31,14 @@ export class ManageItemsPageComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
 
+  addPath(filePath: string): void {
+    if (filePath) {
+      this.itemForm.patchValue({
+        imgUrl: filePath,
+      });
+    }
+  }
+
   onSubmit(): void {
     if (typeof this.authService.getUserIdFromToken() === 'number') {
       const sellerId: number = this.authService.getUserIdFromToken();
