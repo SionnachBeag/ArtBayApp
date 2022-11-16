@@ -36,10 +36,15 @@
     }
 
     .view {
-      font-size: 1.8rem;
-      font-weight: 700;
-      font-family: "Tangerine", serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      font-family: "Dancing Script", cursive;
       letter-spacing: 0.1rem;
+      color: rgb(50, 50, 50);
+    }
+
+    .view:hover {
+      color: $dark-lilac-color;
     }
 
     .price {
