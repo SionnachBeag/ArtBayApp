@@ -52,37 +52,36 @@
         background-color: $dark-lilac-color;
         color: $white-color;
       }
-
-      .manage-button {
-        width: 150px;
-      }
     }
 
-    #conditional-links-container {
-      width: auto;
+    #link-container {
       display: flex;
-      justify-content: flex-start;
-    }
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
 
-    #link-for-user-container {
-      padding-left: 50px;
-    }
+      #logo {
+        width: 48px;
+        height: 48px;
+        margin: 0px 5px 0px 20px;
+      }
 
-    a {
-      color: $dark-lilac-color;
-      text-decoration: none;
-      font-size: 1.8rem;
-      text-shadow: 4px 4px 4px #aaa;
-      font-weight: 700;
-      font-family: "Tangerine", serif;
-      letter-spacing: 0.1rem;
-      text-decoration: underline;
-      margin: 0px 20px;
-      cursor: pointer;
-    }
+      a {
+        color: $dark-lilac-color;
+        text-decoration: none;
+        font-size: 1.8rem;
+        text-shadow: 4px 4px 4px #aaa;
+        font-weight: 700;
+        font-family: "Tangerine", serif;
+        letter-spacing: 0.1rem;
+        text-decoration: underline;
+        margin: 0px 15px;
+        cursor: pointer;
+      }
 
-    a:hover {
-      color: $light-lilac-color;
+      a:hover {
+        color: $light-lilac-color;
+      }
     }
   }
 }
