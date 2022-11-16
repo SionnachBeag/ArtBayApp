@@ -1,6 +1,7 @@
 <section class="header-container">
   <div id="header">
-    <div id="logo">
+    <div id="link-container">
+      <img src="../../../assets/logo_ab.png" id="logo" />
       <a routerLink="/">Home</a>
       <a routerLink="/shop">Shop</a>
       <a (click)="toMyItems()">My Items</a>
@@ -9,7 +10,7 @@
 
     <div id="reg-log-container">
       <div *ngIf="router.url !== '/'" class="dollars">
-        My Art Dollars: {{ artDollars }}
+        Art Dollars: {{ artDollars }}
       </div>
       <button
         *ngIf="authService.getUserName()"
