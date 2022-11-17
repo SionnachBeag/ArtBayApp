@@ -1,5 +1,10 @@
 @import "../../../../../../styles/variables.scss";
 
+input::-ms-clear,
+input::-ms-reveal {
+  display: none;
+}
+
 .registerForm {
   display: flex;
   flex-direction: column;
